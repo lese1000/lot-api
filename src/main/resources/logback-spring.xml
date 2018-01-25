@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<include resource="org/springframework/boot/logging/logback/defaults.xml" />
+	<include resource="org/springframework/boot/logging/logback/base.xml" />
+	<jmxConfigurator />
+	
+	​
+	<springProperty scope="context" name="springAppName"
+		source="spring.application.name" />
+	<!-- Example for logging into the build folder of your project -->
+	<property name="LOG_FILE" value="${BUILD_FOLDER:-build}/${springAppName}" />
+	​
+	<property name="CONSOLE_LOG_PATTERN"
+		value="%date{yyyy-MM-dd HH:mm:ss} | %highlight(%-5level) | %yellow(%thread) | %green(%logger) | %msg%n" />
+
+	<!-- Appender to log to console -->
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<!-- Minimum logging level to be presented in the console logs -->
+			<level>DEBUG</level>
+		</filter>
+		<encoder>
+			<pattern>${CONSOLE_LOG_PATTERN}</pattern>
+			<charset>utf8</charset>
+		</encoder>
+	</appender>
+
+	<!-- Appender to log to file -->
+	<appender name="flatfile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_FILE}.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>7</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${CONSOLE_LOG_PATTERN}</pattern>
+			<charset>utf8</charset>
+		</encoder>
+	</appender>
+	​
+	<!-- Appender to log to file in a JSON format ,需在pom.xml文件中添加依赖-->
+	<appender name="logstash"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_FILE}.json</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_FILE}-%d{yyyy-MM-dd}.json</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder
+			class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+			<providers>
+				<pattern>
+					<pattern>
+						{
+						"datetime":"%date{yyyy-MM-dd HH:mm:ss.fff}",
+						"level": "%level",
+						"service": "${springAppName:-}",
+						"trace": "%X{X-B3-TraceId:-}",
+						"span": "%X{X-B3-SpanId:-}",
+						"parent": "%X{X-B3-ParentSpanId:-}",
+						"exportable": "%X{X-Span-Export:-}",
+						"pid": "${PID:-}",
+						"thread": "%thread",
+						"class": "%logger{40}",
+						"msg": "%message"
+						}
+					</pattern>
+				</pattern>
+			</providers>
+			
+		</encoder>
+	</appender>
+	​
+	<root level="INFO">
+		<!-- <appender-ref ref="console" /> 与flatfile在控制台会重复输出 -->
+		<appender-ref ref="flatfile" /> <!-- 与 logstash功能类似。生成.log文件-->
+		<appender-ref ref="logstash" /> <!--生成.json文件-->
+	</root>
+</configuration>

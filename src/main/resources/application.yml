@@ -1,0 +1,11 @@
+server:
+  port: 9301
+  
+spring:
+  application:
+    name: spring-boot-demo
+
+logging:
+  level:
+    root: INFO
+    #org.springframework.web.servlet.DispatcherServlet: DEBUG

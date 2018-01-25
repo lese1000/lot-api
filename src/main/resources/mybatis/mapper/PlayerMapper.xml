@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.mapper.PlayerMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.entity.Player">
+    <id column="player_id" jdbcType="BIGINT" property="playerId" />
+    <result column="player_name" jdbcType="VARCHAR" property="playerName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="pay_password" jdbcType="VARCHAR" property="payPassword" />
+    <result column="player_type" jdbcType="TINYINT" property="playerType" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="update_user" jdbcType="TIMESTAMP" property="updateUser" />
+    <result column="parent" jdbcType="BIGINT" property="parent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    player_id, player_name, password, pay_password, player_type, create_date, create_user, 
+    update_date, update_user, parent
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from p_player
+    where player_id = #{playerId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from p_player
+    where player_id = #{playerId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.model.entity.Player">
+    insert into p_player (player_id, player_name, password, 
+      pay_password, player_type, create_date, 
+      create_user, update_date, update_user, 
+      parent)
+    values (#{playerId,jdbcType=BIGINT}, #{playerName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{payPassword,jdbcType=VARCHAR}, #{playerType,jdbcType=TINYINT}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{createUser,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=TIMESTAMP}, 
+      #{parent,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.model.entity.Player">
+    insert into p_player
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="playerId != null">
+        player_id,
+      </if>
+      <if test="playerName != null">
+        player_name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="payPassword != null">
+        pay_password,
+      </if>
+      <if test="playerType != null">
+        player_type,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="updateUser != null">
+        update_user,
+      </if>
+      <if test="parent != null">
+        parent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="playerId != null">
+        #{playerId,jdbcType=BIGINT},
+      </if>
+      <if test="playerName != null">
+        #{playerName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="payPassword != null">
+        #{payPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="playerType != null">
+        #{playerType,jdbcType=TINYINT},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=TIMESTAMP},
+      </if>
+      <if test="parent != null">
+        #{parent,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.entity.Player">
+    update p_player
+    <set>
+      <if test="playerName != null">
+        player_name = #{playerName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="payPassword != null">
+        pay_password = #{payPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="playerType != null">
+        player_type = #{playerType,jdbcType=TINYINT},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        update_user = #{updateUser,jdbcType=TIMESTAMP},
+      </if>
+      <if test="parent != null">
+        parent = #{parent,jdbcType=BIGINT},
+      </if>
+    </set>
+    where player_id = #{playerId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.entity.Player">
+    update p_player
+    set player_name = #{playerName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      pay_password = #{payPassword,jdbcType=VARCHAR},
+      player_type = #{playerType,jdbcType=TINYINT},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      update_user = #{updateUser,jdbcType=TIMESTAMP},
+      parent = #{parent,jdbcType=BIGINT}
+    where player_id = #{playerId,jdbcType=BIGINT}
+  </update>
+</mapper>
