@@ -63,7 +63,7 @@
 						"exportable": "%X{X-Span-Export:-}",
 						"pid": "${PID:-}",
 						"thread": "%thread",
-						"class": "%logger{40}",
+						"class": "%logger",
 						"msg": "%message"
 						}
 					</pattern>

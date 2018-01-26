@@ -4,8 +4,16 @@ server:
 spring:
   application:
     name: spring-boot-demo
+  mvc:
+    throw-exception-if-no-handler-found: true
+    view:
+      prefix: /resource/
+      suffix: .html
+  resources:
+    add-mappings: false
 
 logging:
   level:
     root: INFO
     #org.springframework.web.servlet.DispatcherServlet: DEBUG
+    
