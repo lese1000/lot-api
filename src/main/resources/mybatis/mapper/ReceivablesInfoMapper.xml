@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.mapper.ReceivablesInfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.entity.ReceivablesInfo">
+    <id column="receivables_info_id" jdbcType="INTEGER" property="receivablesInfoId" />
+    <result column="bank" jdbcType="VARCHAR" property="bank" />
+    <result column="full_name" jdbcType="VARCHAR" property="fullName" />
+    <result column="opening_bank" jdbcType="VARCHAR" property="openingBank" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="use_img" jdbcType="TINYINT" property="useImg" />
+    <result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="create_user" jdbcType="BIGINT" property="createUser" />
+    <result column="update_user" jdbcType="BIGINT" property="updateUser" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    receivables_info_id, bank, full_name, opening_bank, account, use_img, img_url, type, 
+    create_user, update_user, update_date, create_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from s_receivables_info
+    where receivables_info_id = #{receivablesInfoId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from s_receivables_info
+    where receivables_info_id = #{receivablesInfoId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.model.entity.ReceivablesInfo">
+    insert into s_receivables_info (receivables_info_id, bank, full_name, 
+      opening_bank, account, use_img, 
+      img_url, type, create_user, 
+      update_user, update_date, create_date
+      )
+    values (#{receivablesInfoId,jdbcType=INTEGER}, #{bank,jdbcType=VARCHAR}, #{fullName,jdbcType=VARCHAR}, 
+      #{openingBank,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{useImg,jdbcType=TINYINT}, 
+      #{imgUrl,jdbcType=VARCHAR}, #{type,jdbcType=TINYINT}, #{createUser,jdbcType=BIGINT}, 
+      #{updateUser,jdbcType=BIGINT}, #{updateDate,jdbcType=TIMESTAMP}, #{createDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.model.entity.ReceivablesInfo">
+    insert into s_receivables_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="receivablesInfoId != null">
+        receivables_info_id,
+      </if>
+      <if test="bank != null">
+        bank,
+      </if>
+      <if test="fullName != null">
+        full_name,
+      </if>
+      <if test="openingBank != null">
+        opening_bank,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="useImg != null">
+        use_img,
+      </if>
+      <if test="imgUrl != null">
+        img_url,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="updateUser != null">
+        update_user,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="receivablesInfoId != null">
+        #{receivablesInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="bank != null">
+        #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="fullName != null">
+        #{fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="openingBank != null">
+        #{openingBank,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="useImg != null">
+        #{useImg,jdbcType=TINYINT},
+      </if>
+      <if test="imgUrl != null">
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=BIGINT},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.entity.ReceivablesInfo">
+    update s_receivables_info
+    <set>
+      <if test="bank != null">
+        bank = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="fullName != null">
+        full_name = #{fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="openingBank != null">
+        opening_bank = #{openingBank,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="useImg != null">
+        use_img = #{useImg,jdbcType=TINYINT},
+      </if>
+      <if test="imgUrl != null">
+        img_url = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=BIGINT},
+      </if>
+      <if test="updateUser != null">
+        update_user = #{updateUser,jdbcType=BIGINT},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where receivables_info_id = #{receivablesInfoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.entity.ReceivablesInfo">
+    update s_receivables_info
+    set bank = #{bank,jdbcType=VARCHAR},
+      full_name = #{fullName,jdbcType=VARCHAR},
+      opening_bank = #{openingBank,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      use_img = #{useImg,jdbcType=TINYINT},
+      img_url = #{imgUrl,jdbcType=VARCHAR},
+      type = #{type,jdbcType=TINYINT},
+      create_user = #{createUser,jdbcType=BIGINT},
+      update_user = #{updateUser,jdbcType=BIGINT},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      create_date = #{createDate,jdbcType=TIMESTAMP}
+    where receivables_info_id = #{receivablesInfoId,jdbcType=INTEGER}
+  </update>
+</mapper>

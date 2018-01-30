@@ -8,6 +8,6 @@ public class ViewController {
 
 	@RequestMapping("/")
 	public String index() {
-		return "index";
+		return "redirect:/resource/index.html";
 	}
 }

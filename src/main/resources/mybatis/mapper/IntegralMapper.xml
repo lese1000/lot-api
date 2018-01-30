@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.mapper.IntegralMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.entity.Integral">
+    <id column="integral_id" jdbcType="BIGINT" property="integralId" />
+    <result column="integral_val" jdbcType="DOUBLE" property="integralVal" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="player_id" jdbcType="BIGINT" property="playerId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    integral_id, integral_val, create_date, update_date, player_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from p_integral
+    where integral_id = #{integralId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from p_integral
+    where integral_id = #{integralId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.model.entity.Integral">
+    insert into p_integral (integral_id, integral_val, create_date, 
+      update_date, player_id)
+    values (#{integralId,jdbcType=BIGINT}, #{integralVal,jdbcType=DOUBLE}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{playerId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.model.entity.Integral">
+    insert into p_integral
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="integralId != null">
+        integral_id,
+      </if>
+      <if test="integralVal != null">
+        integral_val,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="playerId != null">
+        player_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="integralId != null">
+        #{integralId,jdbcType=BIGINT},
+      </if>
+      <if test="integralVal != null">
+        #{integralVal,jdbcType=DOUBLE},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="playerId != null">
+        #{playerId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.entity.Integral">
+    update p_integral
+    <set>
+      <if test="integralVal != null">
+        integral_val = #{integralVal,jdbcType=DOUBLE},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="playerId != null">
+        player_id = #{playerId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where integral_id = #{integralId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.entity.Integral">
+    update p_integral
+    set integral_val = #{integralVal,jdbcType=DOUBLE},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      player_id = #{playerId,jdbcType=BIGINT}
+    where integral_id = #{integralId,jdbcType=BIGINT}
+  </update>
+</mapper>

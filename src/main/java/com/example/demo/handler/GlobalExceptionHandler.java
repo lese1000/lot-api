@@ -34,7 +34,6 @@ public class GlobalExceptionHandler {
         	json.setCode("500");
         	logger.error("defaultErrorHandler ", e);
         }
-        json.setData(null);
         json.setSuccess(false);
         return json;
     }

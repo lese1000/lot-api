@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.mapper.JoinBuyMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.entity.JoinBuy">
+    <id column="join_buy_id" jdbcType="BIGINT" property="joinBuyId" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="single_piece_money" jdbcType="DOUBLE" property="singlePieceMoney" />
+    <result column="total_piece_num" jdbcType="INTEGER" property="totalPieceNum" />
+    <result column="remaining_piece_num" jdbcType="INTEGER" property="remainingPieceNum" />
+    <result column="plan_type" jdbcType="TINYINT" property="planType" />
+    <result column="least_num" jdbcType="INTEGER" property="leastNum" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    join_buy_id, order_id, single_piece_money, total_piece_num, remaining_piece_num, 
+    plan_type, least_num, create_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from p_join_buy
+    where join_buy_id = #{joinBuyId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from p_join_buy
+    where join_buy_id = #{joinBuyId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.model.entity.JoinBuy">
+    insert into p_join_buy (join_buy_id, order_id, single_piece_money, 
+      total_piece_num, remaining_piece_num, plan_type, 
+      least_num, create_date)
+    values (#{joinBuyId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{singlePieceMoney,jdbcType=DOUBLE}, 
+      #{totalPieceNum,jdbcType=INTEGER}, #{remainingPieceNum,jdbcType=INTEGER}, #{planType,jdbcType=TINYINT}, 
+      #{leastNum,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.model.entity.JoinBuy">
+    insert into p_join_buy
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="joinBuyId != null">
+        join_buy_id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="singlePieceMoney != null">
+        single_piece_money,
+      </if>
+      <if test="totalPieceNum != null">
+        total_piece_num,
+      </if>
+      <if test="remainingPieceNum != null">
+        remaining_piece_num,
+      </if>
+      <if test="planType != null">
+        plan_type,
+      </if>
+      <if test="leastNum != null">
+        least_num,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="joinBuyId != null">
+        #{joinBuyId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="singlePieceMoney != null">
+        #{singlePieceMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="totalPieceNum != null">
+        #{totalPieceNum,jdbcType=INTEGER},
+      </if>
+      <if test="remainingPieceNum != null">
+        #{remainingPieceNum,jdbcType=INTEGER},
+      </if>
+      <if test="planType != null">
+        #{planType,jdbcType=TINYINT},
+      </if>
+      <if test="leastNum != null">
+        #{leastNum,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.entity.JoinBuy">
+    update p_join_buy
+    <set>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="singlePieceMoney != null">
+        single_piece_money = #{singlePieceMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="totalPieceNum != null">
+        total_piece_num = #{totalPieceNum,jdbcType=INTEGER},
+      </if>
+      <if test="remainingPieceNum != null">
+        remaining_piece_num = #{remainingPieceNum,jdbcType=INTEGER},
+      </if>
+      <if test="planType != null">
+        plan_type = #{planType,jdbcType=TINYINT},
+      </if>
+      <if test="leastNum != null">
+        least_num = #{leastNum,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where join_buy_id = #{joinBuyId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.entity.JoinBuy">
+    update p_join_buy
+    set order_id = #{orderId,jdbcType=BIGINT},
+      single_piece_money = #{singlePieceMoney,jdbcType=DOUBLE},
+      total_piece_num = #{totalPieceNum,jdbcType=INTEGER},
+      remaining_piece_num = #{remainingPieceNum,jdbcType=INTEGER},
+      plan_type = #{planType,jdbcType=TINYINT},
+      least_num = #{leastNum,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP}
+    where join_buy_id = #{joinBuyId,jdbcType=BIGINT}
+  </update>
+</mapper>

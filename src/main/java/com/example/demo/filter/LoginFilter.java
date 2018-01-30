@@ -8,9 +8,14 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.example.demo.common.Constant;
 
 
 public class LoginFilter implements Filter{
@@ -22,10 +27,21 @@ public class LoginFilter implements Filter{
 	}
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse respone, FilterChain filterChain)
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
 			throws IOException, ServletException {
 		log.info(">>>>>>>>login<<<<<<<<<<<<<");
-		filterChain.doFilter(request,respone);
+		
+		HttpServletRequest httpRequest = (HttpServletRequest) request;
+		HttpServletResponse  httpResponet = (HttpServletResponse) response;
+		HttpSession session = httpRequest.getSession();
+		Object player = session.getAttribute(Constant.PLAYER_INFO);
+		
+		if(null == player) {
+			response.getWriter().write("");
+		}else {
+			//已经登陆,继续此次请求
+			filterChain.doFilter(request,response);
+		}
 	}
 
 	@Override

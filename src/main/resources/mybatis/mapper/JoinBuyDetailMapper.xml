@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.mapper.JoinBuyDetailMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.entity.JoinBuyDetail">
+    <id column="join_buy_detail_id" jdbcType="BIGINT" property="joinBuyDetailId" />
+    <result column="join_buy_id" jdbcType="BIGINT" property="joinBuyId" />
+    <result column="player_id" jdbcType="BIGINT" property="playerId" />
+    <result column="buy_count" jdbcType="INTEGER" property="buyCount" />
+    <result column="buy_money" jdbcType="DOUBLE" property="buyMoney" />
+    <result column="win_prize" jdbcType="DOUBLE" property="winPrize" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    join_buy_detail_id, join_buy_id, player_id, buy_count, buy_money, win_prize, create_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from p_join_buy_detail
+    where join_buy_detail_id = #{joinBuyDetailId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from p_join_buy_detail
+    where join_buy_detail_id = #{joinBuyDetailId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.model.entity.JoinBuyDetail">
+    insert into p_join_buy_detail (join_buy_detail_id, join_buy_id, player_id, 
+      buy_count, buy_money, win_prize, 
+      create_date)
+    values (#{joinBuyDetailId,jdbcType=BIGINT}, #{joinBuyId,jdbcType=BIGINT}, #{playerId,jdbcType=BIGINT}, 
+      #{buyCount,jdbcType=INTEGER}, #{buyMoney,jdbcType=DOUBLE}, #{winPrize,jdbcType=DOUBLE}, 
+      #{createDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.model.entity.JoinBuyDetail">
+    insert into p_join_buy_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="joinBuyDetailId != null">
+        join_buy_detail_id,
+      </if>
+      <if test="joinBuyId != null">
+        join_buy_id,
+      </if>
+      <if test="playerId != null">
+        player_id,
+      </if>
+      <if test="buyCount != null">
+        buy_count,
+      </if>
+      <if test="buyMoney != null">
+        buy_money,
+      </if>
+      <if test="winPrize != null">
+        win_prize,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="joinBuyDetailId != null">
+        #{joinBuyDetailId,jdbcType=BIGINT},
+      </if>
+      <if test="joinBuyId != null">
+        #{joinBuyId,jdbcType=BIGINT},
+      </if>
+      <if test="playerId != null">
+        #{playerId,jdbcType=BIGINT},
+      </if>
+      <if test="buyCount != null">
+        #{buyCount,jdbcType=INTEGER},
+      </if>
+      <if test="buyMoney != null">
+        #{buyMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="winPrize != null">
+        #{winPrize,jdbcType=DOUBLE},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.entity.JoinBuyDetail">
+    update p_join_buy_detail
+    <set>
+      <if test="joinBuyId != null">
+        join_buy_id = #{joinBuyId,jdbcType=BIGINT},
+      </if>
+      <if test="playerId != null">
+        player_id = #{playerId,jdbcType=BIGINT},
+      </if>
+      <if test="buyCount != null">
+        buy_count = #{buyCount,jdbcType=INTEGER},
+      </if>
+      <if test="buyMoney != null">
+        buy_money = #{buyMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="winPrize != null">
+        win_prize = #{winPrize,jdbcType=DOUBLE},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where join_buy_detail_id = #{joinBuyDetailId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.entity.JoinBuyDetail">
+    update p_join_buy_detail
+    set join_buy_id = #{joinBuyId,jdbcType=BIGINT},
+      player_id = #{playerId,jdbcType=BIGINT},
+      buy_count = #{buyCount,jdbcType=INTEGER},
+      buy_money = #{buyMoney,jdbcType=DOUBLE},
+      win_prize = #{winPrize,jdbcType=DOUBLE},
+      create_date = #{createDate,jdbcType=TIMESTAMP}
+    where join_buy_detail_id = #{joinBuyDetailId,jdbcType=BIGINT}
+  </update>
+</mapper>

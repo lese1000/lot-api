@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.mapper.BalanceRecordMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.entity.BalanceRecord">
+    <id column="balance_record_id" jdbcType="BIGINT" property="balanceRecordId" />
+    <result column="balance_type" jdbcType="TINYINT" property="balanceType" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="player_id" jdbcType="BIGINT" property="playerId" />
+    <result column="balance_val" jdbcType="DOUBLE" property="balanceVal" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    balance_record_id, balance_type, order_id, player_id, balance_val, create_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from p_balance_record
+    where balance_record_id = #{balanceRecordId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from p_balance_record
+    where balance_record_id = #{balanceRecordId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.model.entity.BalanceRecord">
+    insert into p_balance_record (balance_record_id, balance_type, order_id, 
+      player_id, balance_val, create_date
+      )
+    values (#{balanceRecordId,jdbcType=BIGINT}, #{balanceType,jdbcType=TINYINT}, #{orderId,jdbcType=BIGINT}, 
+      #{playerId,jdbcType=BIGINT}, #{balanceVal,jdbcType=DOUBLE}, #{createDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.model.entity.BalanceRecord">
+    insert into p_balance_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="balanceRecordId != null">
+        balance_record_id,
+      </if>
+      <if test="balanceType != null">
+        balance_type,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="playerId != null">
+        player_id,
+      </if>
+      <if test="balanceVal != null">
+        balance_val,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="balanceRecordId != null">
+        #{balanceRecordId,jdbcType=BIGINT},
+      </if>
+      <if test="balanceType != null">
+        #{balanceType,jdbcType=TINYINT},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="playerId != null">
+        #{playerId,jdbcType=BIGINT},
+      </if>
+      <if test="balanceVal != null">
+        #{balanceVal,jdbcType=DOUBLE},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.entity.BalanceRecord">
+    update p_balance_record
+    <set>
+      <if test="balanceType != null">
+        balance_type = #{balanceType,jdbcType=TINYINT},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="playerId != null">
+        player_id = #{playerId,jdbcType=BIGINT},
+      </if>
+      <if test="balanceVal != null">
+        balance_val = #{balanceVal,jdbcType=DOUBLE},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where balance_record_id = #{balanceRecordId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.entity.BalanceRecord">
+    update p_balance_record
+    set balance_type = #{balanceType,jdbcType=TINYINT},
+      order_id = #{orderId,jdbcType=BIGINT},
+      player_id = #{playerId,jdbcType=BIGINT},
+      balance_val = #{balanceVal,jdbcType=DOUBLE},
+      create_date = #{createDate,jdbcType=TIMESTAMP}
+    where balance_record_id = #{balanceRecordId,jdbcType=BIGINT}
+  </update>
+</mapper>

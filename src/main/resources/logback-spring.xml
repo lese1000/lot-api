@@ -10,9 +10,9 @@
 	<property name="LOG_FILE" value="${BUILD_FOLDER:-logs}/${springAppName}" />
 	​
 	<property name="CONSOLE_LOG_PATTERN"
-		value="%date{yyyy-MM-dd HH:mm:ss.fff} | %highlight(%-5level) |%red(${PID}) --- [ %yellow(%thread) ] | %green(%logger) : %msg%n" />
+		value="%date{yyyy-MM-dd HH:mm:ss.SSS} | %highlight(%-5level) |%red(${PID}) --- [ %yellow(%thread) ] | %green(%logger) : %msg%n" />
 	<property name="FILE_LOG_PATTERN"
-		value="Datetime: %date{yyyy-MM-dd HH:mm:ss.fff} | Level: %-5level | Pid:${PID} -- Thread: [ %thread ] | Class: %logger : %msg%n" />
+		value="Datetime: %date{yyyy-MM-dd HH:mm:ss.SSS} | Level: %-5level | Pid:${PID} --- Thread: [ %thread ] | Class: %logger : %msg%n" />
 
 	<!-- Appender to log to console -->
 	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">

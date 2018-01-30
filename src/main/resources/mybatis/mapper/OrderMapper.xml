@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.mapper.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.entity.Order">
+    <id column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="order_num" jdbcType="VARCHAR" property="orderNum" />
+    <result column="lottery_num_id" jdbcType="BIGINT" property="lotteryNumId" />
+    <result column="player_id" jdbcType="INTEGER" property="playerId" />
+    <result column="is_join_buy" jdbcType="TINYINT" property="isJoinBuy" />
+    <result column="order_status" jdbcType="TINYINT" property="orderStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    order_id, order_num, lottery_num_id, player_id, is_join_buy, order_status, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from p_order
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from p_order
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.model.entity.Order">
+    insert into p_order (order_id, order_num, lottery_num_id, 
+      player_id, is_join_buy, order_status, 
+      create_time)
+    values (#{orderId,jdbcType=BIGINT}, #{orderNum,jdbcType=VARCHAR}, #{lotteryNumId,jdbcType=BIGINT}, 
+      #{playerId,jdbcType=INTEGER}, #{isJoinBuy,jdbcType=TINYINT}, #{orderStatus,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.model.entity.Order">
+    insert into p_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="orderNum != null">
+        order_num,
+      </if>
+      <if test="lotteryNumId != null">
+        lottery_num_id,
+      </if>
+      <if test="playerId != null">
+        player_id,
+      </if>
+      <if test="isJoinBuy != null">
+        is_join_buy,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="lotteryNumId != null">
+        #{lotteryNumId,jdbcType=BIGINT},
+      </if>
+      <if test="playerId != null">
+        #{playerId,jdbcType=INTEGER},
+      </if>
+      <if test="isJoinBuy != null">
+        #{isJoinBuy,jdbcType=TINYINT},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.entity.Order">
+    update p_order
+    <set>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="lotteryNumId != null">
+        lottery_num_id = #{lotteryNumId,jdbcType=BIGINT},
+      </if>
+      <if test="playerId != null">
+        player_id = #{playerId,jdbcType=INTEGER},
+      </if>
+      <if test="isJoinBuy != null">
+        is_join_buy = #{isJoinBuy,jdbcType=TINYINT},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.entity.Order">
+    update p_order
+    set order_num = #{orderNum,jdbcType=VARCHAR},
+      lottery_num_id = #{lotteryNumId,jdbcType=BIGINT},
+      player_id = #{playerId,jdbcType=INTEGER},
+      is_join_buy = #{isJoinBuy,jdbcType=TINYINT},
+      order_status = #{orderStatus,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </update>
+</mapper>

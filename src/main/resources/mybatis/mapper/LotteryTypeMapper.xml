@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.mapper.LotteryTypeMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.entity.LotteryType">
+    <id column="lottery_type_id" jdbcType="BIGINT" property="lotteryTypeId" />
+    <result column="rule_id" jdbcType="BIGINT" property="ruleId" />
+    <result column="lottery_type_name" jdbcType="VARCHAR" property="lotteryTypeName" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    lottery_type_id, rule_id, lottery_type_name, create_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from l_lottery_type
+    where lottery_type_id = #{lotteryTypeId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from l_lottery_type
+    where lottery_type_id = #{lotteryTypeId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.model.entity.LotteryType">
+    insert into l_lottery_type (lottery_type_id, rule_id, lottery_type_name, 
+      create_date)
+    values (#{lotteryTypeId,jdbcType=BIGINT}, #{ruleId,jdbcType=BIGINT}, #{lotteryTypeName,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.model.entity.LotteryType">
+    insert into l_lottery_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="lotteryTypeId != null">
+        lottery_type_id,
+      </if>
+      <if test="ruleId != null">
+        rule_id,
+      </if>
+      <if test="lotteryTypeName != null">
+        lottery_type_name,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="lotteryTypeId != null">
+        #{lotteryTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="ruleId != null">
+        #{ruleId,jdbcType=BIGINT},
+      </if>
+      <if test="lotteryTypeName != null">
+        #{lotteryTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.entity.LotteryType">
+    update l_lottery_type
+    <set>
+      <if test="ruleId != null">
+        rule_id = #{ruleId,jdbcType=BIGINT},
+      </if>
+      <if test="lotteryTypeName != null">
+        lottery_type_name = #{lotteryTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where lottery_type_id = #{lotteryTypeId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.entity.LotteryType">
+    update l_lottery_type
+    set rule_id = #{ruleId,jdbcType=BIGINT},
+      lottery_type_name = #{lotteryTypeName,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP}
+    where lottery_type_id = #{lotteryTypeId,jdbcType=BIGINT}
+  </update>
+</mapper>
