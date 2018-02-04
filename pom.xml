@@ -66,6 +66,13 @@
 	      <artifactId>logstash-logback-encoder</artifactId>
 	      <version>4.10</version>
 	    </dependency>
+	    
+	    <dependency>
+	    	<groupId>tech.lese</groupId>
+			<artifactId>base-utils-libaray</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+	    </dependency>
+	    
 	</dependencies>
 
 	<build>
