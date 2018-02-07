@@ -7,6 +7,10 @@ public class JsonDto {
 	private String message;
 	private Object data;
 	
+	public JsonDto(){
+		this.isSuccess = false;
+	}
+	
 	public boolean isSuccess() {
 		return isSuccess;
 	}
