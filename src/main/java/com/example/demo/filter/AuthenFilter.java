@@ -18,6 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.base.utils.libaray.util.JacksonUtils;
+//import com.base.utils.libaray.util.JacksonUtils;
 import com.example.demo.common.Constant;
 import com.example.demo.model.dto.JsonDto;
 
@@ -25,7 +26,7 @@ import com.example.demo.model.dto.JsonDto;
 
 public class AuthenFilter implements Filter{
 	Logger log = LoggerFactory.getLogger(this.getClass());
-	private final String NO_INTERCEPTOR_PATH = "((/)|(/api/.*)|(/login))";
+	private final String NO_INTERCEPTOR_PATH = "((/)|(/api/.*)|(/login)|(/resource/.*))";
 
 	@Override
 	public void destroy() {
