@@ -3,7 +3,9 @@ package com.example.demo.model.entity;
 import java.util.Date;
 
 public class OrderDetail {
-    private Long orderDetailId;
+    private Long id;
+
+    private Long orderId;
 
     private String bettingNum;
 
@@ -11,18 +13,26 @@ public class OrderDetail {
 
     private Double bettingMoney;
 
-    private Double winPrize;
+    private Integer rate;
 
-    private Long playerId;
+    private Double winPrize;
 
     private Date createDate;
 
-    public Long getOrderDetailId() {
-        return orderDetailId;
+    public Long getId() {
+        return id;
     }
 
-    public void setOrderDetailId(Long orderDetailId) {
-        this.orderDetailId = orderDetailId;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 
     public String getBettingNum() {
@@ -49,20 +59,20 @@ public class OrderDetail {
         this.bettingMoney = bettingMoney;
     }
 
+    public Integer getRate() {
+        return rate;
+    }
+
+    public void setRate(Integer rate) {
+        this.rate = rate;
+    }
+
     public Double getWinPrize() {
         return winPrize;
     }
 
     public void setWinPrize(Double winPrize) {
         this.winPrize = winPrize;
-    }
-
-    public Long getPlayerId() {
-        return playerId;
-    }
-
-    public void setPlayerId(Long playerId) {
-        this.playerId = playerId;
     }
 
     public Date getCreateDate() {

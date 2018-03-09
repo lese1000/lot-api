@@ -3,13 +3,13 @@ package com.example.demo.dao.mapper;
 import com.example.demo.model.entity.LoginRecord;
 
 public interface LoginRecordMapper {
-    int deleteByPrimaryKey(Long loginId);
+    int deleteByPrimaryKey(Long id);
 
     int insert(LoginRecord record);
 
     int insertSelective(LoginRecord record);
 
-    LoginRecord selectByPrimaryKey(Long loginId);
+    LoginRecord selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(LoginRecord record);
 

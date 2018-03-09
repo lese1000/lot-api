@@ -3,13 +3,13 @@ package com.example.demo.dao.mapper;
 import com.example.demo.model.entity.ReceivablesInfo;
 
 public interface ReceivablesInfoMapper {
-    int deleteByPrimaryKey(Integer receivablesInfoId);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(ReceivablesInfo record);
 
     int insertSelective(ReceivablesInfo record);
 
-    ReceivablesInfo selectByPrimaryKey(Integer receivablesInfoId);
+    ReceivablesInfo selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(ReceivablesInfo record);
 

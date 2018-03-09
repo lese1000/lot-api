@@ -3,7 +3,7 @@ package com.example.demo.model.entity;
 import java.util.Date;
 
 public class Integral {
-    private Long integralId;
+    private Long id;
 
     private Double integralVal;
 
@@ -13,12 +13,12 @@ public class Integral {
 
     private Long playerId;
 
-    public Long getIntegralId() {
-        return integralId;
+    public Long getId() {
+        return id;
     }
 
-    public void setIntegralId(Long integralId) {
-        this.integralId = integralId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Double getIntegralVal() {

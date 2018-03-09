@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.dao.mapper.LoginRecordMapper">
-  <resultMap id="BaseResultMap" type="com.example.demo.model.entity.LoginRecord">
+<mapper namespace="com.example.demo.dao.mapper.IntegralRecordMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.entity.IntegralRecord">
     <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="integral_type" jdbcType="TINYINT" property="integralType" />
     <result column="player_id" jdbcType="BIGINT" property="playerId" />
-    <result column="ip_addr" jdbcType="VARCHAR" property="ipAddr" />
     <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, player_id, ip_addr, create_date
+    id, integral_type, player_id, create_date
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from p_login_record
+    from p_integral_record
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from p_login_record
+    delete from p_integral_record
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.example.demo.model.entity.LoginRecord">
-    insert into p_login_record (id, player_id, ip_addr, 
+  <insert id="insert" parameterType="com.example.demo.model.entity.IntegralRecord">
+    insert into p_integral_record (id, integral_type, player_id, 
       create_date)
-    values (#{id,jdbcType=BIGINT}, #{playerId,jdbcType=BIGINT}, #{ipAddr,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=BIGINT}, #{integralType,jdbcType=TINYINT}, #{playerId,jdbcType=BIGINT}, 
       #{createDate,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.demo.model.entity.LoginRecord">
-    insert into p_login_record
+  <insert id="insertSelective" parameterType="com.example.demo.model.entity.IntegralRecord">
+    insert into p_integral_record
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
+      <if test="integralType != null">
+        integral_type,
+      </if>
       <if test="playerId != null">
         player_id,
-      </if>
-      <if test="ipAddr != null">
-        ip_addr,
       </if>
       <if test="createDate != null">
         create_date,
@@ -46,25 +46,25 @@
       <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
+      <if test="integralType != null">
+        #{integralType,jdbcType=TINYINT},
+      </if>
       <if test="playerId != null">
         #{playerId,jdbcType=BIGINT},
-      </if>
-      <if test="ipAddr != null">
-        #{ipAddr,jdbcType=VARCHAR},
       </if>
       <if test="createDate != null">
         #{createDate,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.entity.LoginRecord">
-    update p_login_record
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.entity.IntegralRecord">
+    update p_integral_record
     <set>
+      <if test="integralType != null">
+        integral_type = #{integralType,jdbcType=TINYINT},
+      </if>
       <if test="playerId != null">
         player_id = #{playerId,jdbcType=BIGINT},
-      </if>
-      <if test="ipAddr != null">
-        ip_addr = #{ipAddr,jdbcType=VARCHAR},
       </if>
       <if test="createDate != null">
         create_date = #{createDate,jdbcType=TIMESTAMP},
@@ -72,10 +72,10 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.entity.LoginRecord">
-    update p_login_record
-    set player_id = #{playerId,jdbcType=BIGINT},
-      ip_addr = #{ipAddr,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.entity.IntegralRecord">
+    update p_integral_record
+    set integral_type = #{integralType,jdbcType=TINYINT},
+      player_id = #{playerId,jdbcType=BIGINT},
       create_date = #{createDate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>

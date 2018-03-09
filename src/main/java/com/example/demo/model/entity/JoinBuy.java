@@ -3,7 +3,7 @@ package com.example.demo.model.entity;
 import java.util.Date;
 
 public class JoinBuy {
-    private Long joinBuyId;
+    private Long id;
 
     private Long orderId;
 
@@ -19,12 +19,12 @@ public class JoinBuy {
 
     private Date createDate;
 
-    public Long getJoinBuyId() {
-        return joinBuyId;
+    public Long getId() {
+        return id;
     }
 
-    public void setJoinBuyId(Long joinBuyId) {
-        this.joinBuyId = joinBuyId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getOrderId() {

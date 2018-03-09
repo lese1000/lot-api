@@ -2,36 +2,36 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.mapper.BalanceMapper">
   <resultMap id="BaseResultMap" type="com.example.demo.model.entity.Balance">
-    <id column="balance_id" jdbcType="BIGINT" property="balanceId" />
+    <id column="id" jdbcType="BIGINT" property="id" />
     <result column="player_id" jdbcType="BIGINT" property="playerId" />
     <result column="balance_val" jdbcType="DOUBLE" property="balanceVal" />
     <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
     <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
   </resultMap>
   <sql id="Base_Column_List">
-    balance_id, player_id, balance_val, create_date, update_date
+    id, player_id, balance_val, create_date, update_date
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from p_balance
-    where balance_id = #{balanceId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from p_balance
-    where balance_id = #{balanceId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.example.demo.model.entity.Balance">
-    insert into p_balance (balance_id, player_id, balance_val, 
+    insert into p_balance (id, player_id, balance_val, 
       create_date, update_date)
-    values (#{balanceId,jdbcType=BIGINT}, #{playerId,jdbcType=BIGINT}, #{balanceVal,jdbcType=DOUBLE}, 
+    values (#{id,jdbcType=BIGINT}, #{playerId,jdbcType=BIGINT}, #{balanceVal,jdbcType=DOUBLE}, 
       #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.example.demo.model.entity.Balance">
     insert into p_balance
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="balanceId != null">
-        balance_id,
+      <if test="id != null">
+        id,
       </if>
       <if test="playerId != null">
         player_id,
@@ -47,8 +47,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="balanceId != null">
-        #{balanceId,jdbcType=BIGINT},
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="playerId != null">
         #{playerId,jdbcType=BIGINT},
@@ -80,7 +80,7 @@
         update_date = #{updateDate,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where balance_id = #{balanceId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.demo.model.entity.Balance">
     update p_balance
@@ -88,6 +88,6 @@
       balance_val = #{balanceVal,jdbcType=DOUBLE},
       create_date = #{createDate,jdbcType=TIMESTAMP},
       update_date = #{updateDate,jdbcType=TIMESTAMP}
-    where balance_id = #{balanceId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

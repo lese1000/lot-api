@@ -3,7 +3,7 @@ package com.example.demo.model.entity;
 import java.util.Date;
 
 public class BalanceRecord {
-    private Long balanceRecordId;
+    private Long id;
 
     private Byte balanceType;
 
@@ -15,12 +15,14 @@ public class BalanceRecord {
 
     private Date createDate;
 
-    public Long getBalanceRecordId() {
-        return balanceRecordId;
+    private String createUser;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setBalanceRecordId(Long balanceRecordId) {
-        this.balanceRecordId = balanceRecordId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Byte getBalanceType() {
@@ -61,5 +63,13 @@ public class BalanceRecord {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public String getCreateUser() {
+        return createUser;
+    }
+
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser == null ? null : createUser.trim();
     }
 }

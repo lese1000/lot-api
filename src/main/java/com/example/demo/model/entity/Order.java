@@ -3,7 +3,7 @@ package com.example.demo.model.entity;
 import java.util.Date;
 
 public class Order {
-    private Long orderId;
+    private Long id;
 
     private String orderNum;
 
@@ -17,12 +17,16 @@ public class Order {
 
     private Date createTime;
 
-    public Long getOrderId() {
-        return orderId;
+    private Double totalWinMoney;
+
+    private Double totalBettingMoney;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getOrderNum() {
@@ -71,5 +75,21 @@ public class Order {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public Double getTotalWinMoney() {
+        return totalWinMoney;
+    }
+
+    public void setTotalWinMoney(Double totalWinMoney) {
+        this.totalWinMoney = totalWinMoney;
+    }
+
+    public Double getTotalBettingMoney() {
+        return totalBettingMoney;
+    }
+
+    public void setTotalBettingMoney(Double totalBettingMoney) {
+        this.totalBettingMoney = totalBettingMoney;
     }
 }

@@ -2,44 +2,45 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.mapper.LotteryNumMapper">
   <resultMap id="BaseResultMap" type="com.example.demo.model.entity.LotteryNum">
-    <id column="lottery_num_id" jdbcType="BIGINT" property="lotteryNumId" />
-    <id column="lottery_type_id" jdbcType="BIGINT" property="lotteryTypeId" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="lottery_type_id" jdbcType="BIGINT" property="lotteryTypeId" />
     <result column="lottery_num" jdbcType="VARCHAR" property="lotteryNum" />
     <result column="win_num" jdbcType="VARCHAR" property="winNum" />
     <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
     <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
-    <result column="create_user" jdbcType="BIGINT" property="createUser" />
-    <result column="update_user" jdbcType="BIGINT" property="updateUser" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="open_time" jdbcType="TIMESTAMP" property="openTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    lottery_num_id, lottery_type_id, lottery_num, win_num, create_date, update_date, 
-    create_user, update_user
+    id, lottery_type_id, lottery_num, win_num, create_date, update_date, create_user, 
+    update_user, open_time
   </sql>
-  <select id="selectByPrimaryKey" parameterType="com.example.demo.model.entity.LotteryNumKey" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from l_lottery_num
-    where lottery_num_id = #{lotteryNumId,jdbcType=BIGINT}
-      and lottery_type_id = #{lotteryTypeId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="com.example.demo.model.entity.LotteryNumKey">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from l_lottery_num
-    where lottery_num_id = #{lotteryNumId,jdbcType=BIGINT}
-      and lottery_type_id = #{lotteryTypeId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.example.demo.model.entity.LotteryNum">
-    insert into l_lottery_num (lottery_num_id, lottery_type_id, lottery_num, 
+    insert into l_lottery_num (id, lottery_type_id, lottery_num, 
       win_num, create_date, update_date, 
-      create_user, update_user)
-    values (#{lotteryNumId,jdbcType=BIGINT}, #{lotteryTypeId,jdbcType=BIGINT}, #{lotteryNum,jdbcType=VARCHAR}, 
+      create_user, update_user, open_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{lotteryTypeId,jdbcType=BIGINT}, #{lotteryNum,jdbcType=VARCHAR}, 
       #{winNum,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, 
-      #{createUser,jdbcType=BIGINT}, #{updateUser,jdbcType=BIGINT})
+      #{createUser,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR}, #{openTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.example.demo.model.entity.LotteryNum">
     insert into l_lottery_num
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="lotteryNumId != null">
-        lottery_num_id,
+      <if test="id != null">
+        id,
       </if>
       <if test="lotteryTypeId != null">
         lottery_type_id,
@@ -62,10 +63,13 @@
       <if test="updateUser != null">
         update_user,
       </if>
+      <if test="openTime != null">
+        open_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="lotteryNumId != null">
-        #{lotteryNumId,jdbcType=BIGINT},
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="lotteryTypeId != null">
         #{lotteryTypeId,jdbcType=BIGINT},
@@ -83,16 +87,22 @@
         #{updateDate,jdbcType=TIMESTAMP},
       </if>
       <if test="createUser != null">
-        #{createUser,jdbcType=BIGINT},
+        #{createUser,jdbcType=VARCHAR},
       </if>
       <if test="updateUser != null">
-        #{updateUser,jdbcType=BIGINT},
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="openTime != null">
+        #{openTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.entity.LotteryNum">
     update l_lottery_num
     <set>
+      <if test="lotteryTypeId != null">
+        lottery_type_id = #{lotteryTypeId,jdbcType=BIGINT},
+      </if>
       <if test="lotteryNum != null">
         lottery_num = #{lotteryNum,jdbcType=VARCHAR},
       </if>
@@ -106,24 +116,27 @@
         update_date = #{updateDate,jdbcType=TIMESTAMP},
       </if>
       <if test="createUser != null">
-        create_user = #{createUser,jdbcType=BIGINT},
+        create_user = #{createUser,jdbcType=VARCHAR},
       </if>
       <if test="updateUser != null">
-        update_user = #{updateUser,jdbcType=BIGINT},
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="openTime != null">
+        open_time = #{openTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where lottery_num_id = #{lotteryNumId,jdbcType=BIGINT}
-      and lottery_type_id = #{lotteryTypeId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.demo.model.entity.LotteryNum">
     update l_lottery_num
-    set lottery_num = #{lotteryNum,jdbcType=VARCHAR},
+    set lottery_type_id = #{lotteryTypeId,jdbcType=BIGINT},
+      lottery_num = #{lotteryNum,jdbcType=VARCHAR},
       win_num = #{winNum,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},
       update_date = #{updateDate,jdbcType=TIMESTAMP},
-      create_user = #{createUser,jdbcType=BIGINT},
-      update_user = #{updateUser,jdbcType=BIGINT}
-    where lottery_num_id = #{lotteryNumId,jdbcType=BIGINT}
-      and lottery_type_id = #{lotteryTypeId,jdbcType=BIGINT}
+      create_user = #{createUser,jdbcType=VARCHAR},
+      update_user = #{updateUser,jdbcType=VARCHAR},
+      open_time = #{openTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

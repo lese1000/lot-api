@@ -3,7 +3,7 @@ package com.example.demo.model.entity;
 import java.util.Date;
 
 public class LotteryType {
-    private Long lotteryTypeId;
+    private Long id;
 
     private Long ruleId;
 
@@ -11,12 +11,16 @@ public class LotteryType {
 
     private Date createDate;
 
-    public Long getLotteryTypeId() {
-        return lotteryTypeId;
+    private Integer delFlag;
+
+    private Double singlePrice;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setLotteryTypeId(Long lotteryTypeId) {
-        this.lotteryTypeId = lotteryTypeId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getRuleId() {
@@ -41,5 +45,21 @@ public class LotteryType {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public Integer getDelFlag() {
+        return delFlag;
+    }
+
+    public void setDelFlag(Integer delFlag) {
+        this.delFlag = delFlag;
+    }
+
+    public Double getSinglePrice() {
+        return singlePrice;
+    }
+
+    public void setSinglePrice(Double singlePrice) {
+        this.singlePrice = singlePrice;
     }
 }

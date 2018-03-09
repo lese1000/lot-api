@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.mapper.CardMapper">
   <resultMap id="BaseResultMap" type="com.example.demo.model.entity.Card">
-    <id column="card_id" jdbcType="BIGINT" property="cardId" />
+    <id column="id" jdbcType="BIGINT" property="id" />
     <result column="player_id" jdbcType="BIGINT" property="playerId" />
     <result column="card_num" jdbcType="VARCHAR" property="cardNum" />
     <result column="bank" jdbcType="VARCHAR" property="bank" />
@@ -11,31 +11,31 @@
     <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
   </resultMap>
   <sql id="Base_Column_List">
-    card_id, player_id, card_num, bank, full_name, create_date, update_date
+    id, player_id, card_num, bank, full_name, create_date, update_date
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from p_card
-    where card_id = #{cardId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from p_card
-    where card_id = #{cardId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.example.demo.model.entity.Card">
-    insert into p_card (card_id, player_id, card_num, 
+    insert into p_card (id, player_id, card_num, 
       bank, full_name, create_date, 
       update_date)
-    values (#{cardId,jdbcType=BIGINT}, #{playerId,jdbcType=BIGINT}, #{cardNum,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=BIGINT}, #{playerId,jdbcType=BIGINT}, #{cardNum,jdbcType=VARCHAR}, 
       #{bank,jdbcType=VARCHAR}, #{fullName,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
       #{updateDate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.example.demo.model.entity.Card">
     insert into p_card
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="cardId != null">
-        card_id,
+      <if test="id != null">
+        id,
       </if>
       <if test="playerId != null">
         player_id,
@@ -57,8 +57,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="cardId != null">
-        #{cardId,jdbcType=BIGINT},
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="playerId != null">
         #{playerId,jdbcType=BIGINT},
@@ -102,7 +102,7 @@
         update_date = #{updateDate,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where card_id = #{cardId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.demo.model.entity.Card">
     update p_card
@@ -112,6 +112,6 @@
       full_name = #{fullName,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},
       update_date = #{updateDate,jdbcType=TIMESTAMP}
-    where card_id = #{cardId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

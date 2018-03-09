@@ -3,13 +3,13 @@ package com.example.demo.dao.mapper;
 import com.example.demo.model.entity.CashRecord;
 
 public interface CashRecordMapper {
-    int deleteByPrimaryKey(Long cashId);
+    int deleteByPrimaryKey(Long id);
 
     int insert(CashRecord record);
 
     int insertSelective(CashRecord record);
 
-    CashRecord selectByPrimaryKey(Long cashId);
+    CashRecord selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(CashRecord record);
 

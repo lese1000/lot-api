@@ -3,7 +3,7 @@ package com.example.demo.model.entity;
 import java.util.Date;
 
 public class Player {
-    private Long playerId;
+    private Long id;
 
     private String playerName;
 
@@ -19,16 +19,16 @@ public class Player {
 
     private Date updateDate;
 
-    private Date updateUser;
+    private String updateUser;
 
     private Long parent;
 
-    public Long getPlayerId() {
-        return playerId;
+    public Long getId() {
+        return id;
     }
 
-    public void setPlayerId(Long playerId) {
-        this.playerId = playerId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getPlayerName() {
@@ -87,12 +87,12 @@ public class Player {
         this.updateDate = updateDate;
     }
 
-    public Date getUpdateUser() {
+    public String getUpdateUser() {
         return updateUser;
     }
 
-    public void setUpdateUser(Date updateUser) {
-        this.updateUser = updateUser;
+    public void setUpdateUser(String updateUser) {
+        this.updateUser = updateUser == null ? null : updateUser.trim();
     }
 
     public Long getParent() {

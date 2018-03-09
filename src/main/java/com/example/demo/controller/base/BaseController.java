@@ -25,7 +25,7 @@ public class BaseController {
 	protected String JSONVIEW = "jsonview";
 	protected int pageSize = 10;
 	protected int pageNum = 1;
-	protected Logger logger = LoggerFactory.getLogger(this.getClass());
+	protected Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	protected Player player;
 	protected Long playerId;
@@ -39,7 +39,11 @@ public class BaseController {
 		pageSize = this.getInt("pageSize")== 0 ? 10 : getInt("pageSize");
 		pageNum = getInt("pageNum") == 0 ? 1 : getInt("pageNum");
 		this.player = (Player) this.session.getAttribute(Constant.PLAYER_INFO);
-		this.playerId = this.player.getPlayerId();
+		if(null != this.player) {
+			this.playerId = this.player.getId();
+		}
+		
+		
 	}
 
 	

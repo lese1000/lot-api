@@ -3,7 +3,7 @@ package com.example.demo.model.entity;
 import java.util.Date;
 
 public class ReceivablesInfo {
-    private Integer receivablesInfoId;
+    private Integer id;
 
     private String bank;
 
@@ -19,20 +19,20 @@ public class ReceivablesInfo {
 
     private Byte type;
 
-    private Long createUser;
+    private String createUser;
 
-    private Long updateUser;
+    private String updateUser;
 
     private Date updateDate;
 
     private Date createDate;
 
-    public Integer getReceivablesInfoId() {
-        return receivablesInfoId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setReceivablesInfoId(Integer receivablesInfoId) {
-        this.receivablesInfoId = receivablesInfoId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getBank() {
@@ -91,20 +91,20 @@ public class ReceivablesInfo {
         this.type = type;
     }
 
-    public Long getCreateUser() {
+    public String getCreateUser() {
         return createUser;
     }
 
-    public void setCreateUser(Long createUser) {
-        this.createUser = createUser;
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser == null ? null : createUser.trim();
     }
 
-    public Long getUpdateUser() {
+    public String getUpdateUser() {
         return updateUser;
     }
 
-    public void setUpdateUser(Long updateUser) {
-        this.updateUser = updateUser;
+    public void setUpdateUser(String updateUser) {
+        this.updateUser = updateUser == null ? null : updateUser.trim();
     }
 
     public Date getUpdateDate() {

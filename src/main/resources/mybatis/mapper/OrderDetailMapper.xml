@@ -2,41 +2,44 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.mapper.OrderDetailMapper">
   <resultMap id="BaseResultMap" type="com.example.demo.model.entity.OrderDetail">
-    <id column="order_detail_id" jdbcType="BIGINT" property="orderDetailId" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
     <result column="betting_num" jdbcType="VARCHAR" property="bettingNum" />
     <result column="betting_count" jdbcType="INTEGER" property="bettingCount" />
     <result column="betting_money" jdbcType="DOUBLE" property="bettingMoney" />
+    <result column="rate" jdbcType="INTEGER" property="rate" />
     <result column="win_prize" jdbcType="DOUBLE" property="winPrize" />
-    <result column="player_id" jdbcType="BIGINT" property="playerId" />
     <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
   </resultMap>
   <sql id="Base_Column_List">
-    order_detail_id, betting_num, betting_count, betting_money, win_prize, player_id, 
-    create_date
+    id, order_id, betting_num, betting_count, betting_money, rate, win_prize, create_date
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from p_order_detail
-    where order_detail_id = #{orderDetailId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from p_order_detail
-    where order_detail_id = #{orderDetailId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.example.demo.model.entity.OrderDetail">
-    insert into p_order_detail (order_detail_id, betting_num, betting_count, 
-      betting_money, win_prize, player_id, 
-      create_date)
-    values (#{orderDetailId,jdbcType=BIGINT}, #{bettingNum,jdbcType=VARCHAR}, #{bettingCount,jdbcType=INTEGER}, 
-      #{bettingMoney,jdbcType=DOUBLE}, #{winPrize,jdbcType=DOUBLE}, #{playerId,jdbcType=BIGINT}, 
-      #{createDate,jdbcType=TIMESTAMP})
+    insert into p_order_detail (id, order_id, betting_num, 
+      betting_count, betting_money, rate, 
+      win_prize, create_date)
+    values (#{id,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{bettingNum,jdbcType=VARCHAR}, 
+      #{bettingCount,jdbcType=INTEGER}, #{bettingMoney,jdbcType=DOUBLE}, #{rate,jdbcType=INTEGER}, 
+      #{winPrize,jdbcType=DOUBLE}, #{createDate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.example.demo.model.entity.OrderDetail">
     insert into p_order_detail
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="orderDetailId != null">
-        order_detail_id,
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderId != null">
+        order_id,
       </if>
       <if test="bettingNum != null">
         betting_num,
@@ -47,19 +50,22 @@
       <if test="bettingMoney != null">
         betting_money,
       </if>
+      <if test="rate != null">
+        rate,
+      </if>
       <if test="winPrize != null">
         win_prize,
-      </if>
-      <if test="playerId != null">
-        player_id,
       </if>
       <if test="createDate != null">
         create_date,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="orderDetailId != null">
-        #{orderDetailId,jdbcType=BIGINT},
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
       </if>
       <if test="bettingNum != null">
         #{bettingNum,jdbcType=VARCHAR},
@@ -70,11 +76,11 @@
       <if test="bettingMoney != null">
         #{bettingMoney,jdbcType=DOUBLE},
       </if>
+      <if test="rate != null">
+        #{rate,jdbcType=INTEGER},
+      </if>
       <if test="winPrize != null">
         #{winPrize,jdbcType=DOUBLE},
-      </if>
-      <if test="playerId != null">
-        #{playerId,jdbcType=BIGINT},
       </if>
       <if test="createDate != null">
         #{createDate,jdbcType=TIMESTAMP},
@@ -84,6 +90,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.entity.OrderDetail">
     update p_order_detail
     <set>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
       <if test="bettingNum != null">
         betting_num = #{bettingNum,jdbcType=VARCHAR},
       </if>
@@ -93,26 +102,27 @@
       <if test="bettingMoney != null">
         betting_money = #{bettingMoney,jdbcType=DOUBLE},
       </if>
+      <if test="rate != null">
+        rate = #{rate,jdbcType=INTEGER},
+      </if>
       <if test="winPrize != null">
         win_prize = #{winPrize,jdbcType=DOUBLE},
-      </if>
-      <if test="playerId != null">
-        player_id = #{playerId,jdbcType=BIGINT},
       </if>
       <if test="createDate != null">
         create_date = #{createDate,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where order_detail_id = #{orderDetailId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.demo.model.entity.OrderDetail">
     update p_order_detail
-    set betting_num = #{bettingNum,jdbcType=VARCHAR},
+    set order_id = #{orderId,jdbcType=BIGINT},
+      betting_num = #{bettingNum,jdbcType=VARCHAR},
       betting_count = #{bettingCount,jdbcType=INTEGER},
       betting_money = #{bettingMoney,jdbcType=DOUBLE},
+      rate = #{rate,jdbcType=INTEGER},
       win_prize = #{winPrize,jdbcType=DOUBLE},
-      player_id = #{playerId,jdbcType=BIGINT},
       create_date = #{createDate,jdbcType=TIMESTAMP}
-    where order_detail_id = #{orderDetailId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

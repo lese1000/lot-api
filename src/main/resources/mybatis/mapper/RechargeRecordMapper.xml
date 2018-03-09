@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.mapper.RechargeRecordMapper">
   <resultMap id="BaseResultMap" type="com.example.demo.model.entity.RechargeRecord">
-    <id column="recharge_id" jdbcType="BIGINT" property="rechargeId" />
+    <id column="id" jdbcType="BIGINT" property="id" />
     <result column="player_id" jdbcType="BIGINT" property="playerId" />
     <result column="full_name" jdbcType="VARCHAR" property="fullName" />
     <result column="pay_account" jdbcType="VARCHAR" property="payAccount" />
@@ -11,37 +11,38 @@
     <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
     <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
     <result column="status" jdbcType="TINYINT" property="status" />
-    <result column="update_user" jdbcType="BIGINT" property="updateUser" />
+    <result column="auditor" jdbcType="VARCHAR" property="auditor" />
+    <result column="audit_time" jdbcType="TIMESTAMP" property="auditTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    recharge_id, player_id, full_name, pay_account, pay_type_id, recharge_val, create_date, 
-    update_date, status, update_user
+    id, player_id, full_name, pay_account, pay_type_id, recharge_val, create_date, update_date, 
+    status, auditor, audit_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from s_recharge_record
-    where recharge_id = #{rechargeId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from s_recharge_record
-    where recharge_id = #{rechargeId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.example.demo.model.entity.RechargeRecord">
-    insert into s_recharge_record (recharge_id, player_id, full_name, 
+    insert into s_recharge_record (id, player_id, full_name, 
       pay_account, pay_type_id, recharge_val, 
       create_date, update_date, status, 
-      update_user)
-    values (#{rechargeId,jdbcType=BIGINT}, #{playerId,jdbcType=BIGINT}, #{fullName,jdbcType=VARCHAR}, 
+      auditor, audit_time)
+    values (#{id,jdbcType=BIGINT}, #{playerId,jdbcType=BIGINT}, #{fullName,jdbcType=VARCHAR}, 
       #{payAccount,jdbcType=VARCHAR}, #{payTypeId,jdbcType=VARCHAR}, #{rechargeVal,jdbcType=DOUBLE}, 
       #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, #{status,jdbcType=TINYINT}, 
-      #{updateUser,jdbcType=BIGINT})
+      #{auditor,jdbcType=VARCHAR}, #{auditTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.example.demo.model.entity.RechargeRecord">
     insert into s_recharge_record
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="rechargeId != null">
-        recharge_id,
+      <if test="id != null">
+        id,
       </if>
       <if test="playerId != null">
         player_id,
@@ -67,13 +68,16 @@
       <if test="status != null">
         status,
       </if>
-      <if test="updateUser != null">
-        update_user,
+      <if test="auditor != null">
+        auditor,
+      </if>
+      <if test="auditTime != null">
+        audit_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="rechargeId != null">
-        #{rechargeId,jdbcType=BIGINT},
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="playerId != null">
         #{playerId,jdbcType=BIGINT},
@@ -99,8 +103,11 @@
       <if test="status != null">
         #{status,jdbcType=TINYINT},
       </if>
-      <if test="updateUser != null">
-        #{updateUser,jdbcType=BIGINT},
+      <if test="auditor != null">
+        #{auditor,jdbcType=VARCHAR},
+      </if>
+      <if test="auditTime != null">
+        #{auditTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -131,11 +138,14 @@
       <if test="status != null">
         status = #{status,jdbcType=TINYINT},
       </if>
-      <if test="updateUser != null">
-        update_user = #{updateUser,jdbcType=BIGINT},
+      <if test="auditor != null">
+        auditor = #{auditor,jdbcType=VARCHAR},
+      </if>
+      <if test="auditTime != null">
+        audit_time = #{auditTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where recharge_id = #{rechargeId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.demo.model.entity.RechargeRecord">
     update s_recharge_record
@@ -147,7 +157,8 @@
       create_date = #{createDate,jdbcType=TIMESTAMP},
       update_date = #{updateDate,jdbcType=TIMESTAMP},
       status = #{status,jdbcType=TINYINT},
-      update_user = #{updateUser,jdbcType=BIGINT}
-    where recharge_id = #{rechargeId,jdbcType=BIGINT}
+      auditor = #{auditor,jdbcType=VARCHAR},
+      audit_time = #{auditTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -12,7 +12,7 @@ public class PlayerController extends BaseController{
 
 	@RequestMapping("login")
 	public JsonDto login() {
-		logger.info("xxxxxxxxxxxxxxx");
+		log.info("xxxxxxxxxxxxxxx");
 		return this.json;
 	}
 }

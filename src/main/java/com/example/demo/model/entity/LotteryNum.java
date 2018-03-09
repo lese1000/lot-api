@@ -2,7 +2,11 @@ package com.example.demo.model.entity;
 
 import java.util.Date;
 
-public class LotteryNum extends LotteryNumKey {
+public class LotteryNum {
+    private Long id;
+
+    private Long lotteryTypeId;
+
     private String lotteryNum;
 
     private String winNum;
@@ -11,9 +15,27 @@ public class LotteryNum extends LotteryNumKey {
 
     private Date updateDate;
 
-    private Long createUser;
+    private String createUser;
 
-    private Long updateUser;
+    private String updateUser;
+
+    private Date openTime;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getLotteryTypeId() {
+        return lotteryTypeId;
+    }
+
+    public void setLotteryTypeId(Long lotteryTypeId) {
+        this.lotteryTypeId = lotteryTypeId;
+    }
 
     public String getLotteryNum() {
         return lotteryNum;
@@ -47,19 +69,27 @@ public class LotteryNum extends LotteryNumKey {
         this.updateDate = updateDate;
     }
 
-    public Long getCreateUser() {
+    public String getCreateUser() {
         return createUser;
     }
 
-    public void setCreateUser(Long createUser) {
-        this.createUser = createUser;
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser == null ? null : createUser.trim();
     }
 
-    public Long getUpdateUser() {
+    public String getUpdateUser() {
         return updateUser;
     }
 
-    public void setUpdateUser(Long updateUser) {
-        this.updateUser = updateUser;
+    public void setUpdateUser(String updateUser) {
+        this.updateUser = updateUser == null ? null : updateUser.trim();
+    }
+
+    public Date getOpenTime() {
+        return openTime;
+    }
+
+    public void setOpenTime(Date openTime) {
+        this.openTime = openTime;
     }
 }

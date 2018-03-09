@@ -8,7 +8,7 @@
 	<properties resource="application.properties" />
     <!--数据库驱动-->
     <!-- 配置成本地的mysql-connector-java jar -->  
-    <classPathEntry    location="D:\devtools\mvn-repo\mysql\mysql-connector-java\5.1.41\mysql-connector-java-5.1.41.jar"/>
+    <classPathEntry    location="/Users/lese/.m2/repository/mysql/mysql-connector-java/5.1.44/mysql-connector-java-5.1.44.jar"/>
     
     
     <context id="mysql">

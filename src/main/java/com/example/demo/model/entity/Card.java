@@ -3,7 +3,7 @@ package com.example.demo.model.entity;
 import java.util.Date;
 
 public class Card {
-    private Long cardId;
+    private Long id;
 
     private Long playerId;
 
@@ -17,12 +17,12 @@ public class Card {
 
     private Date updateDate;
 
-    public Long getCardId() {
-        return cardId;
+    public Long getId() {
+        return id;
     }
 
-    public void setCardId(Long cardId) {
-        this.cardId = cardId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getPlayerId() {

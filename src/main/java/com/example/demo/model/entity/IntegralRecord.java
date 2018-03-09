@@ -2,12 +2,12 @@ package com.example.demo.model.entity;
 
 import java.util.Date;
 
-public class LoginRecord {
+public class IntegralRecord {
     private Long id;
 
-    private Long playerId;
+    private Byte integralType;
 
-    private String ipAddr;
+    private Long playerId;
 
     private Date createDate;
 
@@ -19,20 +19,20 @@ public class LoginRecord {
         this.id = id;
     }
 
+    public Byte getIntegralType() {
+        return integralType;
+    }
+
+    public void setIntegralType(Byte integralType) {
+        this.integralType = integralType;
+    }
+
     public Long getPlayerId() {
         return playerId;
     }
 
     public void setPlayerId(Long playerId) {
         this.playerId = playerId;
-    }
-
-    public String getIpAddr() {
-        return ipAddr;
-    }
-
-    public void setIpAddr(String ipAddr) {
-        this.ipAddr = ipAddr == null ? null : ipAddr.trim();
     }
 
     public Date getCreateDate() {

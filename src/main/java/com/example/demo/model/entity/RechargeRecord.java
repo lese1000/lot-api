@@ -3,7 +3,7 @@ package com.example.demo.model.entity;
 import java.util.Date;
 
 public class RechargeRecord {
-    private Long rechargeId;
+    private Long id;
 
     private Long playerId;
 
@@ -21,14 +21,16 @@ public class RechargeRecord {
 
     private Byte status;
 
-    private Long updateUser;
+    private String auditor;
 
-    public Long getRechargeId() {
-        return rechargeId;
+    private Date auditTime;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setRechargeId(Long rechargeId) {
-        this.rechargeId = rechargeId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getPlayerId() {
@@ -95,11 +97,19 @@ public class RechargeRecord {
         this.status = status;
     }
 
-    public Long getUpdateUser() {
-        return updateUser;
+    public String getAuditor() {
+        return auditor;
     }
 
-    public void setUpdateUser(Long updateUser) {
-        this.updateUser = updateUser;
+    public void setAuditor(String auditor) {
+        this.auditor = auditor == null ? null : auditor.trim();
+    }
+
+    public Date getAuditTime() {
+        return auditTime;
+    }
+
+    public void setAuditTime(Date auditTime) {
+        this.auditTime = auditTime;
     }
 }

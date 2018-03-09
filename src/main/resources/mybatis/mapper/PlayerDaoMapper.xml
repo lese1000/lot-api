@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.PlayerDaoMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.entity.Player">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="player_name" jdbcType="VARCHAR" property="playerName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="pay_password" jdbcType="VARCHAR" property="payPassword" />
+    <result column="player_type" jdbcType="TINYINT" property="playerType" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="parent" jdbcType="BIGINT" property="parent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, player_name, password, pay_password, player_type, create_date, create_user, update_date, 
+    update_user, parent
+  </sql>
+  <select id="findByNameAndPassowrd" parameterType="Player" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from p_player
+    where player_name = #{playerName} and password = #{password}
+  </select>
+</mapper>
