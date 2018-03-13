@@ -6,4 +6,6 @@ import com.example.demo.model.entity.Player;
 public interface PlayerService extends PlayerMapper{
 
 	Player findByNameAndPassowrd(Player player);
+	
+	Player findByPlayerName(String playerName);
 }

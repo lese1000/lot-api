@@ -10,9 +10,4 @@ import com.example.demo.model.dto.JsonDto;
 @RequestMapping("/api/v1/player/")
 public class PlayerController extends BaseController{
 
-	@RequestMapping("login")
-	public JsonDto login() {
-		log.info("xxxxxxxxxxxxxxx");
-		return this.json;
-	}
 }

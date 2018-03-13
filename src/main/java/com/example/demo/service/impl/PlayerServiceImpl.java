@@ -57,4 +57,10 @@ public class PlayerServiceImpl implements PlayerService{
 		return playerDao.findByNameAndPassowrd(player);
 	}
 
+	@Override
+	public Player findByPlayerName(String playerName) {
+		// TODO Auto-generated method stub
+		return playerDao.findByPlayerName(playerName);
+	}
+
 }

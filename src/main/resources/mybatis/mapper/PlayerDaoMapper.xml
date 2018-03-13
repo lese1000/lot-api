@@ -17,10 +17,19 @@
     id, player_name, password, pay_password, player_type, create_date, create_user, update_date, 
     update_user, parent
   </sql>
+  
+  
   <select id="findByNameAndPassowrd" parameterType="Player" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from p_player
     where player_name = #{playerName} and password = #{password}
+  </select>
+  
+  <select id="findByPlayerName"  resultType = "Player">
+  	select
+  	<include refid="Base_Column_List"></include>
+  	from p_player
+  	where player_name = #{playerName}
   </select>
 </mapper>
