@@ -11,10 +11,11 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="total_win_money" jdbcType="DOUBLE" property="totalWinMoney" />
     <result column="total_betting_money" jdbcType="DOUBLE" property="totalBettingMoney" />
+    <result column="rule_id" jdbcType="BIGINT" property="ruleId" />
   </resultMap>
   <sql id="Base_Column_List">
     id, order_num, lottery_num_id, player_id, is_join_buy, order_status, create_time, 
-    total_win_money, total_betting_money
+    total_win_money, total_betting_money, rule_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -29,12 +30,12 @@
   <insert id="insert" parameterType="com.example.demo.model.entity.Order">
     insert into p_order (id, order_num, lottery_num_id, 
       player_id, is_join_buy, order_status, 
-      create_time, total_win_money, total_betting_money
-      )
+      create_time, total_win_money, total_betting_money, 
+      rule_id)
     values (#{id,jdbcType=BIGINT}, #{orderNum,jdbcType=VARCHAR}, #{lotteryNumId,jdbcType=BIGINT}, 
       #{playerId,jdbcType=INTEGER}, #{isJoinBuy,jdbcType=TINYINT}, #{orderStatus,jdbcType=TINYINT}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{totalWinMoney,jdbcType=DOUBLE}, #{totalBettingMoney,jdbcType=DOUBLE}
-      )
+      #{createTime,jdbcType=TIMESTAMP}, #{totalWinMoney,jdbcType=DOUBLE}, #{totalBettingMoney,jdbcType=DOUBLE}, 
+      #{ruleId,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.example.demo.model.entity.Order">
     insert into p_order
@@ -66,6 +67,9 @@
       <if test="totalBettingMoney != null">
         total_betting_money,
       </if>
+      <if test="ruleId != null">
+        rule_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -94,6 +98,9 @@
       </if>
       <if test="totalBettingMoney != null">
         #{totalBettingMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="ruleId != null">
+        #{ruleId,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -124,6 +131,9 @@
       <if test="totalBettingMoney != null">
         total_betting_money = #{totalBettingMoney,jdbcType=DOUBLE},
       </if>
+      <if test="ruleId != null">
+        rule_id = #{ruleId,jdbcType=BIGINT},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -136,7 +146,8 @@
       order_status = #{orderStatus,jdbcType=TINYINT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       total_win_money = #{totalWinMoney,jdbcType=DOUBLE},
-      total_betting_money = #{totalBettingMoney,jdbcType=DOUBLE}
+      total_betting_money = #{totalBettingMoney,jdbcType=DOUBLE},
+      rule_id = #{ruleId,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

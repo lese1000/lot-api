@@ -21,6 +21,8 @@ public class Order {
 
     private Double totalBettingMoney;
 
+    private Long ruleId;
+
     public Long getId() {
         return id;
     }
@@ -91,5 +93,13 @@ public class Order {
 
     public void setTotalBettingMoney(Double totalBettingMoney) {
         this.totalBettingMoney = totalBettingMoney;
+    }
+
+    public Long getRuleId() {
+        return ruleId;
+    }
+
+    public void setRuleId(Long ruleId) {
+        this.ruleId = ruleId;
     }
 }

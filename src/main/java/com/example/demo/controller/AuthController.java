@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.base.utils.libaray.util.CookieUtils;
 import com.base.utils.libaray.util.Md5;
 import com.base.utils.libaray.util.NetworkUtil;
 import com.example.demo.common.Constant;
@@ -51,6 +52,9 @@ public class AuthController extends BaseController{
 				record.setIpAddr(idAddr);
 				record.setPlayerId(entity.getId());
 				loginRecordService.insert(record);
+				
+				//
+				CookieUtils.setSessionCookie(response, "playerId", entity.getId()+"");
 				json.setSuccess();
 			}else {
 				json.setFailure("用户名或密码错误");

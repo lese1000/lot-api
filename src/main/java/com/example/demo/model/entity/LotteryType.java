@@ -5,8 +5,6 @@ import java.util.Date;
 public class LotteryType {
     private Long id;
 
-    private Long ruleId;
-
     private String lotteryTypeName;
 
     private Date createDate;
@@ -21,14 +19,6 @@ public class LotteryType {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getRuleId() {
-        return ruleId;
-    }
-
-    public void setRuleId(Long ruleId) {
-        this.ruleId = ruleId;
     }
 
     public String getLotteryTypeName() {

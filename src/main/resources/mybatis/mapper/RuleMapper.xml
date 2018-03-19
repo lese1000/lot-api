@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.mapper.RuleMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.entity.Rule">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="lottery_type_id" jdbcType="BIGINT" property="lotteryTypeId" />
+    <result column="rule_name" jdbcType="VARCHAR" property="ruleName" />
+    <result column="is_default" jdbcType="TINYINT" property="isDefault" />
+    <result column="win_prize" jdbcType="DOUBLE" property="winPrize" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, lottery_type_id, rule_name, is_default, win_prize, status, remark, create_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from l_rule
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from l_rule
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.model.entity.Rule">
+    insert into l_rule (id, lottery_type_id, rule_name, 
+      is_default, win_prize, status, 
+      remark, create_date)
+    values (#{id,jdbcType=BIGINT}, #{lotteryTypeId,jdbcType=BIGINT}, #{ruleName,jdbcType=VARCHAR}, 
+      #{isDefault,jdbcType=TINYINT}, #{winPrize,jdbcType=DOUBLE}, #{status,jdbcType=TINYINT}, 
+      #{remark,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.model.entity.Rule">
+    insert into l_rule
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="lotteryTypeId != null">
+        lottery_type_id,
+      </if>
+      <if test="ruleName != null">
+        rule_name,
+      </if>
+      <if test="isDefault != null">
+        is_default,
+      </if>
+      <if test="winPrize != null">
+        win_prize,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="lotteryTypeId != null">
+        #{lotteryTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="ruleName != null">
+        #{ruleName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefault != null">
+        #{isDefault,jdbcType=TINYINT},
+      </if>
+      <if test="winPrize != null">
+        #{winPrize,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.entity.Rule">
+    update l_rule
+    <set>
+      <if test="lotteryTypeId != null">
+        lottery_type_id = #{lotteryTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="ruleName != null">
+        rule_name = #{ruleName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefault != null">
+        is_default = #{isDefault,jdbcType=TINYINT},
+      </if>
+      <if test="winPrize != null">
+        win_prize = #{winPrize,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.entity.Rule">
+    update l_rule
+    set lottery_type_id = #{lotteryTypeId,jdbcType=BIGINT},
+      rule_name = #{ruleName,jdbcType=VARCHAR},
+      is_default = #{isDefault,jdbcType=TINYINT},
+      win_prize = #{winPrize,jdbcType=DOUBLE},
+      status = #{status,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
