@@ -1,0 +1,52 @@
+package com.example.demo.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.dao.mapper.RechargeRecordMapper;
+import com.example.demo.model.entity.RechargeRecord;
+import com.example.demo.service.RechargeRecordService;
+
+@Service
+public class RechargeRecordServiceImpl implements RechargeRecordService{
+	
+	@Autowired
+	private RechargeRecordMapper rechargeRecordMapper;
+
+	@Override
+	public int deleteByPrimaryKey(Long id) {
+		// TODO Auto-generated method stub
+		return rechargeRecordMapper.deleteByPrimaryKey(id);
+	}
+
+	@Override
+	public int insert(RechargeRecord record) {
+		// TODO Auto-generated method stub
+		return rechargeRecordMapper.insert(record);
+	}
+
+	@Override
+	public int insertSelective(RechargeRecord record) {
+		// TODO Auto-generated method stub
+		return rechargeRecordMapper.insertSelective(record);
+	}
+
+	@Override
+	public RechargeRecord selectByPrimaryKey(Long id) {
+		// TODO Auto-generated method stub
+		return rechargeRecordMapper.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public int updateByPrimaryKeySelective(RechargeRecord record) {
+		// TODO Auto-generated method stub
+		return rechargeRecordMapper.updateByPrimaryKeySelective(record);
+	}
+
+	@Override
+	public int updateByPrimaryKey(RechargeRecord record) {
+		// TODO Auto-generated method stub
+		return rechargeRecordMapper.updateByPrimaryKey(record);
+	}
+
+}

@@ -9,6 +9,8 @@ public class JsonDto {
 	
 	public JsonDto(){
 		this.isSuccess = false;
+		this.code = "400";
+		this.message = "失败";
 	}
 	
 	public boolean isSuccess() {

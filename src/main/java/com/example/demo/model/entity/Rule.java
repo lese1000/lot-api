@@ -5,8 +5,6 @@ import java.util.Date;
 public class Rule {
     private Long id;
 
-    private Long lotteryTypeId;
-
     private String ruleName;
 
     private Byte isDefault;
@@ -19,20 +17,16 @@ public class Rule {
 
     private Date createDate;
 
+    private Byte playType;
+
+    private Byte selectNumber;
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getLotteryTypeId() {
-        return lotteryTypeId;
-    }
-
-    public void setLotteryTypeId(Long lotteryTypeId) {
-        this.lotteryTypeId = lotteryTypeId;
     }
 
     public String getRuleName() {
@@ -81,5 +75,21 @@ public class Rule {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public Byte getPlayType() {
+        return playType;
+    }
+
+    public void setPlayType(Byte playType) {
+        this.playType = playType;
+    }
+
+    public Byte getSelectNumber() {
+        return selectNumber;
+    }
+
+    public void setSelectNumber(Byte selectNumber) {
+        this.selectNumber = selectNumber;
     }
 }

@@ -15,6 +15,8 @@ public class RechargeRecord {
 
     private Double rechargeVal;
 
+    private Double actualAccount;
+
     private Date createDate;
 
     private Date updateDate;
@@ -71,6 +73,14 @@ public class RechargeRecord {
 
     public void setRechargeVal(Double rechargeVal) {
         this.rechargeVal = rechargeVal;
+    }
+
+    public Double getActualAccount() {
+        return actualAccount;
+    }
+
+    public void setActualAccount(Double actualAccount) {
+        this.actualAccount = actualAccount;
     }
 
     public Date getCreateDate() {

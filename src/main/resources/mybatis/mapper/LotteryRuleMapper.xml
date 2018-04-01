@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.mapper.LotteryRuleMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.entity.LotteryRule">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="lottery_type_id" jdbcType="BIGINT" property="lotteryTypeId" />
+    <result column="rule_id" jdbcType="BIGINT" property="ruleId" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, lottery_type_id, rule_id, status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from l_lottery_rule
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from l_lottery_rule
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.model.entity.LotteryRule">
+    insert into l_lottery_rule (id, lottery_type_id, rule_id, 
+      status)
+    values (#{id,jdbcType=BIGINT}, #{lotteryTypeId,jdbcType=BIGINT}, #{ruleId,jdbcType=BIGINT}, 
+      #{status,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.model.entity.LotteryRule">
+    insert into l_lottery_rule
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="lotteryTypeId != null">
+        lottery_type_id,
+      </if>
+      <if test="ruleId != null">
+        rule_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="lotteryTypeId != null">
+        #{lotteryTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="ruleId != null">
+        #{ruleId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.entity.LotteryRule">
+    update l_lottery_rule
+    <set>
+      <if test="lotteryTypeId != null">
+        lottery_type_id = #{lotteryTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="ruleId != null">
+        rule_id = #{ruleId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.entity.LotteryRule">
+    update l_lottery_rule
+    set lottery_type_id = #{lotteryTypeId,jdbcType=BIGINT},
+      rule_id = #{ruleId,jdbcType=BIGINT},
+      status = #{status,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
