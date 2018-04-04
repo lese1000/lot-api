@@ -1,8 +1,11 @@
 package com.example.demo.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dao.OrderDetailDaoMapper;
 import com.example.demo.dao.mapper.OrderDetailMapper;
 import com.example.demo.model.entity.OrderDetail;
 import com.example.demo.service.OrderDetailService;
@@ -12,6 +15,8 @@ public class OrderDetailServiceImpl implements OrderDetailService{
 	
 	@Autowired
 	private OrderDetailMapper orderDetailMapper;
+	
+	private OrderDetailDaoMapper orderDetailDaoMapper;
 
 	@Override
 	public int deleteByPrimaryKey(Long id) {
@@ -47,6 +52,12 @@ public class OrderDetailServiceImpl implements OrderDetailService{
 	public int updateByPrimaryKey(OrderDetail record) {
 		// TODO Auto-generated method stub
 		return orderDetailMapper.updateByPrimaryKey(record);
+	}
+
+	@Override
+	public int batchInsert(List<OrderDetail> orderDetailList) {
+		// TODO Auto-generated method stub
+		return orderDetailDaoMapper.batchInsert(orderDetailList);
 	}
 
 }

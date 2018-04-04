@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.dao.mapper.OrderMapper">
+<mapper namespace="com.example.demo.dao.OrderDaoMapper">
   <resultMap id="BaseResultMap" type="com.example.demo.model.entity.Order">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="order_num" jdbcType="VARCHAR" property="orderNum" />
@@ -17,17 +17,11 @@
     id, order_num, lottery_num_id, player_id, is_join_buy, order_status, create_time, 
     total_win_money, total_betting_money, rule_id
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from p_order
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from p_order
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.example.demo.model.entity.Order">
+  
+  <insert id="insertReturnPrimaryKey" parameterType="com.example.demo.model.entity.Order">
+  	<selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
+          SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into p_order (id, order_num, lottery_num_id, 
       player_id, is_join_buy, order_status, 
       create_time, total_win_money, total_betting_money, 
@@ -37,7 +31,10 @@
       #{createTime,jdbcType=TIMESTAMP}, #{totalWinMoney,jdbcType=DOUBLE}, #{totalBettingMoney,jdbcType=DOUBLE}, 
       #{ruleId,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.demo.model.entity.Order">
+  <insert id="insertSelectiveReturnPrimaryKey" parameterType="com.example.demo.model.entity.Order">
+    	<selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
+          SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into p_order
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -104,50 +101,5 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.entity.Order">
-    update p_order
-    <set>
-      <if test="orderNum != null">
-        order_num = #{orderNum,jdbcType=VARCHAR},
-      </if>
-      <if test="lotteryNumId != null">
-        lottery_num_id = #{lotteryNumId,jdbcType=BIGINT},
-      </if>
-      <if test="playerId != null">
-        player_id = #{playerId,jdbcType=BIGINT},
-      </if>
-      <if test="isJoinBuy != null">
-        is_join_buy = #{isJoinBuy,jdbcType=TINYINT},
-      </if>
-      <if test="orderStatus != null">
-        order_status = #{orderStatus,jdbcType=TINYINT},
-      </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="totalWinMoney != null">
-        total_win_money = #{totalWinMoney,jdbcType=DOUBLE},
-      </if>
-      <if test="totalBettingMoney != null">
-        total_betting_money = #{totalBettingMoney,jdbcType=DOUBLE},
-      </if>
-      <if test="ruleId != null">
-        rule_id = #{ruleId,jdbcType=BIGINT},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.entity.Order">
-    update p_order
-    set order_num = #{orderNum,jdbcType=VARCHAR},
-      lottery_num_id = #{lotteryNumId,jdbcType=BIGINT},
-      player_id = #{playerId,jdbcType=BIGINT},
-      is_join_buy = #{isJoinBuy,jdbcType=TINYINT},
-      order_status = #{orderStatus,jdbcType=TINYINT},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      total_win_money = #{totalWinMoney,jdbcType=DOUBLE},
-      total_betting_money = #{totalBettingMoney,jdbcType=DOUBLE},
-      rule_id = #{ruleId,jdbcType=BIGINT}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+  
 </mapper>

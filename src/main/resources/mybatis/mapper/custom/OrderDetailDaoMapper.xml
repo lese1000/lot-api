@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.OrderDetailDaoMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.entity.OrderDetail">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="betting_num" jdbcType="VARCHAR" property="bettingNum" />
+    <result column="betting_count" jdbcType="INTEGER" property="bettingCount" />
+    <result column="betting_money" jdbcType="DOUBLE" property="bettingMoney" />
+    <result column="rate" jdbcType="INTEGER" property="rate" />
+    <result column="win_prize" jdbcType="DOUBLE" property="winPrize" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_id, betting_num, betting_count, betting_money, rate, win_prize, create_date
+  </sql>
+  
+  <insert id="batchInsert">
+  		insert into p_order_detail (id, order_id, betting_num, 
+	      betting_count, betting_money, rate, 
+	      win_prize, create_date)
+	    values 
+    		<foreach collection="orderDetailList" item="item" separator="," >  
+            (#{id,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{bettingNum,jdbcType=VARCHAR}, 
+	        #{bettingCount,jdbcType=INTEGER}, #{bettingMoney,jdbcType=DOUBLE}, #{rate,jdbcType=INTEGER}, 
+	        #{winPrize,jdbcType=DOUBLE}, #{createDate,jdbcType=TIMESTAMP})
+        </foreach>  
+  </insert>
+</mapper>

@@ -9,7 +9,7 @@ public class Order {
 
     private Long lotteryNumId;
 
-    private Integer playerId;
+    private Long playerId;
 
     private Byte isJoinBuy;
 
@@ -47,11 +47,11 @@ public class Order {
         this.lotteryNumId = lotteryNumId;
     }
 
-    public Integer getPlayerId() {
+    public Long getPlayerId() {
         return playerId;
     }
 
-    public void setPlayerId(Integer playerId) {
+    public void setPlayerId(Long playerId) {
         this.playerId = playerId;
     }
 

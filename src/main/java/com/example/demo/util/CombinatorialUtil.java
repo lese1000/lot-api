@@ -8,28 +8,34 @@ public class CombinatorialUtil {
 
 	}
 	
-	public static int getCombinatorial(int max,int num){
-		if(num>max){
+	/**
+	 * 组合算法
+	 * @param bottomNum 基础数
+	 * @param topNum 选取的数
+	 * @return
+	 */
+	public static int getCombinatorial(int bottomNum,int topNum){
+		if(topNum > bottomNum){
 			return 0;
-		}else if(num==1){
-			return max;
-		}else if(num==max){
+		}else if(topNum == 1){
+			return bottomNum;
+		}else if(topNum == bottomNum){
 			return 1;
 		}else{
 			int i_a=1;
-			for(int i=0;i<num;i++){
-				i_a=i_a*(max-i);
+			for(int i=0; i< topNum; i++){
+				i_a=i_a * (bottomNum-i);
 			}
-			return i_a/getFactorial(num);
+			return i_a/getFactorial(topNum);
 		}
 		
 	} 
 	
-	private static int getFactorial(int  num){
-		if(num==1){
-			return num;
+	private static int getFactorial(int  topNum){
+		if(topNum == 1){
+			return topNum;
 		}else{
-			return num*getFactorial(num-1);
+			return topNum * getFactorial(topNum-1);
 		}
 	} 
 

@@ -1,14 +1,12 @@
-package com.example.demo.service;
+package com.example.demo.dao;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.example.demo.dao.mapper.OrderDetailMapper;
 import com.example.demo.model.entity.OrderDetail;
 
-public interface OrderDetailService extends OrderDetailMapper{
-	
+public interface OrderDetailDaoMapper {
+   
 	int batchInsert(@Param(value="orderDetailList") List<OrderDetail> orderDetailList);
-
 }

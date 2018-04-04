@@ -3,6 +3,7 @@ package com.example.demo.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dao.OrderDaoMapper;
 import com.example.demo.dao.mapper.OrderMapper;
 import com.example.demo.model.entity.Order;
 import com.example.demo.service.OrderService;
@@ -12,6 +13,8 @@ public class OrderServiceImpl implements OrderService{
 	
 	@Autowired
 	private OrderMapper orderMapper;
+	
+	private OrderDaoMapper orderDaoMapper;
 
 	@Override
 	public int deleteByPrimaryKey(Long id) {
@@ -47,6 +50,18 @@ public class OrderServiceImpl implements OrderService{
 	public int updateByPrimaryKey(Order record) {
 		// TODO Auto-generated method stub
 		return orderMapper.updateByPrimaryKey(record);
+	}
+
+	@Override
+	public int insertReturnPrimaryKey(Order record) {
+		// TODO Auto-generated method stub
+		return orderDaoMapper.insertReturnPrimaryKey(record);
+	}
+
+	@Override
+	public int insertSelectiveReturnPrimaryKey(Order record) {
+		// TODO Auto-generated method stub
+		return orderDaoMapper.insertSelectiveReturnPrimaryKey(record);
 	}
 
 }
