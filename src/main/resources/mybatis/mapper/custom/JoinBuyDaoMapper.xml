@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.JoinBuyDaoMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.entity.JoinBuy">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="single_piece_money" jdbcType="DOUBLE" property="singlePieceMoney" />
+    <result column="total_piece_num" jdbcType="INTEGER" property="totalPieceNum" />
+    <result column="remaining_piece_num" jdbcType="INTEGER" property="remainingPieceNum" />
+    <result column="plan_type" jdbcType="TINYINT" property="planType" />
+    <result column="least_num" jdbcType="INTEGER" property="leastNum" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_id, single_piece_money, total_piece_num, remaining_piece_num, plan_type, 
+    least_num, create_date
+  </sql>
+
+
+  <insert id="insertReturnPrimaryKey" parameterType="com.example.demo.model.entity.JoinBuy">
+  	<selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
+          SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into p_join_buy (id, order_id, single_piece_money, 
+      total_piece_num, remaining_piece_num, plan_type, 
+      least_num, create_date)
+    values (#{id,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{singlePieceMoney,jdbcType=DOUBLE}, 
+      #{totalPieceNum,jdbcType=INTEGER}, #{remainingPieceNum,jdbcType=INTEGER}, #{planType,jdbcType=TINYINT}, 
+      #{leastNum,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelectiveReturnPrimaryKey" parameterType="com.example.demo.model.entity.JoinBuy">
+  	<selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
+          SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into p_join_buy
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="singlePieceMoney != null">
+        single_piece_money,
+      </if>
+      <if test="totalPieceNum != null">
+        total_piece_num,
+      </if>
+      <if test="remainingPieceNum != null">
+        remaining_piece_num,
+      </if>
+      <if test="planType != null">
+        plan_type,
+      </if>
+      <if test="leastNum != null">
+        least_num,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="singlePieceMoney != null">
+        #{singlePieceMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="totalPieceNum != null">
+        #{totalPieceNum,jdbcType=INTEGER},
+      </if>
+      <if test="remainingPieceNum != null">
+        #{remainingPieceNum,jdbcType=INTEGER},
+      </if>
+      <if test="planType != null">
+        #{planType,jdbcType=TINYINT},
+      </if>
+      <if test="leastNum != null">
+        #{leastNum,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <select id="listJoinBuy" parameterType="com.example.demo.model.entity.JoinBuy" resultMap="BaseResultMap">
+  		select 
+  			<include refid="Base_Column_List"></include>
+  		from p_join_buy 
+  		order by create_date desc
+  		
+  </select>
+  
+  
+</mapper>

@@ -16,14 +16,14 @@
   </sql>
   
   <insert id="batchInsert">
-  		insert into p_order_detail (id, order_id, betting_num, 
+  		insert into p_order_detail ( order_id, betting_num, 
 	      betting_count, betting_money, rate, 
 	      win_prize, create_date)
 	    values 
     		<foreach collection="orderDetailList" item="item" separator="," >  
-            (#{id,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{bettingNum,jdbcType=VARCHAR}, 
-	        #{bettingCount,jdbcType=INTEGER}, #{bettingMoney,jdbcType=DOUBLE}, #{rate,jdbcType=INTEGER}, 
-	        #{winPrize,jdbcType=DOUBLE}, #{createDate,jdbcType=TIMESTAMP})
+            (#{item.orderId,jdbcType=BIGINT}, #{item.bettingNum,jdbcType=VARCHAR}, 
+	        #{item.bettingCount,jdbcType=INTEGER}, #{item.bettingMoney,jdbcType=DOUBLE}, #{item.rate,jdbcType=INTEGER}, 
+	        #{item.winPrize,jdbcType=DOUBLE}, #{item.createDate,jdbcType=TIMESTAMP})
         </foreach>  
   </insert>
 </mapper>

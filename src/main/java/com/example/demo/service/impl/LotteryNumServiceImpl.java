@@ -3,6 +3,7 @@ package com.example.demo.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dao.LotteryNumDaoMapper;
 import com.example.demo.dao.mapper.LotteryNumMapper;
 import com.example.demo.model.entity.LotteryNum;
 import com.example.demo.service.LotteryNumService;
@@ -12,6 +13,9 @@ public class LotteryNumServiceImpl implements LotteryNumService{
 
 	@Autowired
 	private LotteryNumMapper lotteryNumMapper;
+	
+	@Autowired
+	private LotteryNumDaoMapper lotteryNumDaoMapper;
 	
 	@Override
 	public int deleteByPrimaryKey(Long id) {
@@ -47,6 +51,12 @@ public class LotteryNumServiceImpl implements LotteryNumService{
 	public int updateByPrimaryKey(LotteryNum record) {
 		// TODO Auto-generated method stub
 		return lotteryNumMapper.updateByPrimaryKey(record);
+	}
+
+	@Override
+	public LotteryNum getNewestLotteryNum(Long lotteryTypeId) {
+		// TODO Auto-generated method stub
+		return lotteryNumDaoMapper.getNewestLotteryNum(lotteryTypeId);
 	}
 
 }

@@ -11,10 +11,12 @@
     <result column="create_user" jdbcType="VARCHAR" property="createUser" />
     <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
     <result column="open_time" jdbcType="TIMESTAMP" property="openTime" />
+    <result column="begin_time" jdbcType="TIMESTAMP" property="beginTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
   </resultMap>
   <sql id="Base_Column_List">
     id, lottery_type_id, lottery_num, win_num, create_date, update_date, create_user, 
-    update_user, open_time
+    update_user, open_time, begin_time, end_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -29,12 +31,12 @@
   <insert id="insert" parameterType="com.example.demo.model.entity.LotteryNum">
     insert into l_lottery_num (id, lottery_type_id, lottery_num, 
       win_num, create_date, update_date, 
-      create_user, update_user, open_time
-      )
+      create_user, update_user, open_time, 
+      begin_time, end_time)
     values (#{id,jdbcType=BIGINT}, #{lotteryTypeId,jdbcType=BIGINT}, #{lotteryNum,jdbcType=VARCHAR}, 
       #{winNum,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, 
-      #{createUser,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR}, #{openTime,jdbcType=TIMESTAMP}
-      )
+      #{createUser,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR}, #{openTime,jdbcType=TIMESTAMP}, 
+      #{beginTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.example.demo.model.entity.LotteryNum">
     insert into l_lottery_num
@@ -66,6 +68,12 @@
       <if test="openTime != null">
         open_time,
       </if>
+      <if test="beginTime != null">
+        begin_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -94,6 +102,12 @@
       </if>
       <if test="openTime != null">
         #{openTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -124,6 +138,12 @@
       <if test="openTime != null">
         open_time = #{openTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="beginTime != null">
+        begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -136,7 +156,9 @@
       update_date = #{updateDate,jdbcType=TIMESTAMP},
       create_user = #{createUser,jdbcType=VARCHAR},
       update_user = #{updateUser,jdbcType=VARCHAR},
-      open_time = #{openTime,jdbcType=TIMESTAMP}
+      open_time = #{openTime,jdbcType=TIMESTAMP},
+      begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

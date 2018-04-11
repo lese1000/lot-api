@@ -22,6 +22,6 @@
   	select 
   	<include refid="Base_Column_List" />
   	from p_balance
-  	where player_id = playerId
+  	where player_id = #{playerId}
   </select>
 </mapper>

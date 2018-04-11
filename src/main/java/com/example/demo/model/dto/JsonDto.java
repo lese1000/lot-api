@@ -21,6 +21,11 @@ public class JsonDto {
 		this.code = "200";
 		this.message = "成功";
 	}
+	public void setSuccess(String msg) {
+		this.isSuccess = true;
+		this.code = "200";
+		this.message = msg;
+	}
 	
 	public void setFailure(String msg) {
 		this.isSuccess = false;
