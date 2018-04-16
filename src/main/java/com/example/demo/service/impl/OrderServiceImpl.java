@@ -1,5 +1,7 @@
 package com.example.demo.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -7,6 +9,7 @@ import com.example.demo.dao.OrderDaoMapper;
 import com.example.demo.dao.mapper.OrderMapper;
 import com.example.demo.model.entity.Order;
 import com.example.demo.service.OrderService;
+import com.github.pagehelper.PageHelper;
 
 @Service 
 public class OrderServiceImpl implements OrderService{
@@ -63,6 +66,13 @@ public class OrderServiceImpl implements OrderService{
 	public int insertSelectiveReturnPrimaryKey(Order record) {
 		// TODO Auto-generated method stub
 		return orderDaoMapper.insertSelectiveReturnPrimaryKey(record);
+	}
+
+	@Override
+	public List<Order> listOrderSelective(Order record, int pageNum, int pageSize) {
+		// TODO Auto-generated method stub
+		PageHelper.startPage(pageNum, pageSize);
+		return orderDaoMapper.listOrderSelective(record);
 	}
 
 }

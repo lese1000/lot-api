@@ -62,4 +62,11 @@ public class JoinBuyDetailServiceImpl implements JoinBuyDetailService{
 		return joinBuyDetailDaoMapper.listJoinBuyDetailByJoinBuyId(joinBuyId);
 	}
 
+	@Override
+	public List<JoinBuyDetail> listJoinBuyDetailByPlayerId(Long playerId, int pageNum, int pageSize) {
+		// TODO Auto-generated method stub
+		PageHelper.startPage(pageNum, pageSize);
+		return joinBuyDetailDaoMapper.listJoinBuyDetailByPlayerId(playerId);
+	}
+
 }

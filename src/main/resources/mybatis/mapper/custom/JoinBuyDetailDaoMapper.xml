@@ -31,4 +31,12 @@
     order by j.create_date desc
   </select>
   
+  <select id="listJoinBuyDetailByPlayerId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    j.id, j.join_buy_id, j.player_id, j.buy_count, j.buy_money, j.win_prize, j.create_date
+    from p_join_buy_detail j
+    where j.player_id = #{playerId} 
+    order by j.create_date desc
+  </select>
+  
 </mapper>

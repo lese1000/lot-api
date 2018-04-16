@@ -102,4 +102,23 @@
     </trim>
   </insert>
   
+  <select id="listOrderSelective" parameterType="com.example.demo.model.entity.Order" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List"></include>
+  	from p_order
+  	where player_id = #{playerId}
+  	<if test="null != orderNum">
+  		and order_num = #{orderNum}
+  	</if>
+  	<if test="null != lotteryNumId">
+  		and lottery_num_id = #{lotteryNumId}
+  	</if>
+  	<if test="null != isJoinBuy">
+  		and is_join_buy = #{isJoinBuy}
+  	</if>
+  	<if test="null != orderStatus">
+  		and order_status = #{orderStatus}
+  	</if>
+  	order by create_time desc 
+  </select>
+  
 </mapper>
