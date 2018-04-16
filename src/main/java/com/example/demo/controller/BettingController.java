@@ -419,9 +419,9 @@ public class BettingController extends BaseController{
 				joinBuyDetailService.insertSelective(joinBuyDetail);
 				
 				if(useNewestLotteryNum) {
-					json.setSuccess("投注成功！当前期号已停止投注，自动顺延至最新一期");
+					json.setSuccess("发布成功！当前期号已停止投注，自动顺延至最新一期");
 				}else {
-					json.setSuccess("投注成功！");
+					json.setSuccess("发布成功！");
 				}
 				
 			

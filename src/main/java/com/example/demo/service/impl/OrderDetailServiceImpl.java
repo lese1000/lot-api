@@ -61,4 +61,10 @@ public class OrderDetailServiceImpl implements OrderDetailService{
 		return orderDetailDaoMapper.batchInsert(orderDetailList);
 	}
 
+	@Override
+	public List<OrderDetail> listOrderDetailByOrderId(Long orderId) {
+		// TODO Auto-generated method stub
+		return orderDetailDaoMapper.listOrderDetailByOrderId(orderId);
+	}
+
 }

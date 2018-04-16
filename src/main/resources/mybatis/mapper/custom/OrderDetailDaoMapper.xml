@@ -26,4 +26,10 @@
 	        #{item.winPrize,jdbcType=DOUBLE}, #{item.createDate,jdbcType=TIMESTAMP})
         </foreach>  
   </insert>
+  
+  <select id="listOrderDetailByOrderId" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List" />
+  		from p_order_detail
+  		where order_id = #{orderId}
+  </select>
 </mapper>

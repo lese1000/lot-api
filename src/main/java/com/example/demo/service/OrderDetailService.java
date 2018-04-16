@@ -10,5 +10,7 @@ import com.example.demo.model.entity.OrderDetail;
 public interface OrderDetailService extends OrderDetailMapper{
 	
 	int batchInsert(@Param(value="orderDetailList") List<OrderDetail> orderDetailList);
+	
+	List<OrderDetail> listOrderDetailByOrderId(Long orderId);
 
 }

@@ -1,8 +1,11 @@
 package com.example.demo.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dao.ReceivablesInfoDaoMapper;
 import com.example.demo.dao.mapper.ReceivablesInfoMapper;
 import com.example.demo.model.entity.ReceivablesInfo;
 import com.example.demo.service.ReceivablesInfoService;
@@ -12,6 +15,9 @@ public class ReceivablesInfoServiceImpl implements ReceivablesInfoService {
 	
 	@Autowired
 	private ReceivablesInfoMapper receivablesInfoMapper;
+	
+	@Autowired
+	private ReceivablesInfoDaoMapper receivablesInfoDaoMapper;
 
 	@Override
 	public int deleteByPrimaryKey(Integer id) {
@@ -47,6 +53,12 @@ public class ReceivablesInfoServiceImpl implements ReceivablesInfoService {
 	public int updateByPrimaryKey(ReceivablesInfo record) {
 		// TODO Auto-generated method stub
 		return receivablesInfoMapper.updateByPrimaryKey(record);
+	}
+
+	@Override
+	public List<ReceivablesInfo> listReceivablesInfo() {
+		// TODO Auto-generated method stub
+		return receivablesInfoDaoMapper.listReceivablesInfo();
 	}
 
 }
