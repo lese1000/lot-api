@@ -58,6 +58,9 @@ public class HistoryController extends BaseController{
 					
 					LotteryNum lotteryNum = lotteryNumService.selectByPrimaryKey(item.getLotteryNumId());
 					historyVo.setLotteryNum(lotteryNum.getLotteryNum());
+					if(item.getOrderStatus() !=0) {
+						historyVo.setWinNum(lotteryNum.getWinNum());
+					}
 					
 					LotteryType lotteryType = lotteryTypeService.selectByPrimaryKey(lotteryNum.getLotteryTypeId());
 					historyVo.setLotteryTypeName(lotteryType.getLotteryTypeName());
@@ -110,6 +113,9 @@ public class HistoryController extends BaseController{
 					
 					LotteryNum lotteryNum = lotteryNumService.selectByPrimaryKey(order.getLotteryNumId());
 					historyVo.setLotteryNum(lotteryNum.getLotteryNum());
+					if(order.getOrderStatus() !=0) {
+						historyVo.setWinNum(lotteryNum.getWinNum());
+					}
 					
 					LotteryType lotteryType = lotteryTypeService.selectByPrimaryKey(lotteryNum.getLotteryTypeId());
 					historyVo.setLotteryTypeName(lotteryType.getLotteryTypeName());

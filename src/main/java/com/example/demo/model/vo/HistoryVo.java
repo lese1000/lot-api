@@ -20,6 +20,8 @@ public class HistoryVo {
 	private Long joinBuyId;
 	private Long orderId;
 	
+	private String winNum;
+	
 	private List<OrderDetail> orderDetailList;
 	
 	
@@ -83,6 +85,13 @@ public class HistoryVo {
 	public void setOrderDetailList(List<OrderDetail> orderDetailList) {
 		this.orderDetailList = orderDetailList;
 	}
+	public String getWinNum() {
+		return winNum;
+	}
+	public void setWinNum(String winNum) {
+		this.winNum = winNum;
+	}
+	
 	
 	
 	

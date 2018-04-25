@@ -14,6 +14,8 @@ public class OrderDetailVo {
 	
 	private Long joinBuyId;
 	
+	private String winNum;
+	
 	private List<OrderDetail> orderDetailList;
 
 	public String getLotteryTypeName() {
@@ -71,6 +73,16 @@ public class OrderDetailVo {
 	public void setOrderDetailList(List<OrderDetail> orderDetailList) {
 		this.orderDetailList = orderDetailList;
 	}
+
+	public String getWinNum() {
+		return winNum;
+	}
+
+	public void setWinNum(String winNum) {
+		this.winNum = winNum;
+	}
+	
+	
 
 
     

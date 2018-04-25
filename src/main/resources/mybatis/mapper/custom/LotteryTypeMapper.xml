@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.LotteryTypeDaoMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.entity.LotteryType">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="lottery_type_name" jdbcType="VARCHAR" property="lotteryTypeName" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="del_flag" jdbcType="INTEGER" property="delFlag" />
+    <result column="single_price" jdbcType="DOUBLE" property="singlePrice" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, lottery_type_name, create_date, del_flag, single_price
+  </sql>
+  <select id="listLotteryTypeSelective" parameterType="LotteryType" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from l_lottery_type
+     <trim prefix="where"  prefixOverrides="and">
+      <if test="id != null">
+        and id = #{id}
+      </if>
+      <if test="lotteryTypeName != null">
+        and lottery_type_name = #{lotteryTypeName}
+      </if>
+      <if test="createDate != null">
+        and create_date = #{createDate}
+      </if>
+      <if test="delFlag != null">
+        and del_flag = #{delFlag}
+      </if>
+      <if test="singlePrice != null">
+        and single_price = #{singlePrice}
+      </if>
+    </trim>
+  </select>
+     
+</mapper>

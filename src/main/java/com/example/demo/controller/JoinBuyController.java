@@ -129,6 +129,9 @@ public class JoinBuyController extends BaseController{
 				OrderDetailVo orderDetailVo = new OrderDetailVo();
 				orderDetailVo.setJoinBuyId(joinBuyId);
 				
+				if(order.getOrderStatus() !=0) {
+					orderDetailVo.setWinNum(lotteryNum.getWinNum());
+				}
 				orderDetailVo.setLotteryNum(lotteryNum.getLotteryNum());
 				orderDetailVo.setLotteryTypeName(lotteryType.getLotteryTypeName());
 				orderDetailVo.setOrderDetailList(orderDetailList);
