@@ -36,7 +36,7 @@ public class PlayerServiceImpl implements PlayerService{
 	@Override
 	public Player selectByPrimaryKey(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return playerMapper.selectByPrimaryKey(id);
 	}
 
 	@Override

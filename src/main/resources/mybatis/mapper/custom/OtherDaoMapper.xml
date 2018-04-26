@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.OtherDaoMapper">
+
+  <select id="listWinPrizePlayer" resultType="com.example.demo.model.vo.WinPrizeVo">
+  	select p.player_name , o.total_win_money winPrize
+  	from p_player p, p_order o
+  	where p.id = o.player_id and o.order_status = 1 and o.is_join_buy = 0
+  	order by o.create_time desc
+  </select>
+  
+  <select id="listPlayerRecharge" resultType="com.example.demo.model.vo.PlayerRechargeVo">
+  	select  p.player_name , r.recharge_val 
+  	from p_player p, s_recharge_record r 
+  	where p.id = r.player_id and r.status = 2
+  	order by r.create_date 
+  </select>   
+</mapper>
