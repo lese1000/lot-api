@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.dao.CashRecordDaoMapper;
 import com.example.demo.dao.mapper.CashRecordMapper;
@@ -19,18 +20,21 @@ public class CashRecordServiceImpl implements CashRecordService{
 	@Autowired
 	private CashRecordDaoMapper cashRecordDaoMapper;
 
+	@Transactional
 	@Override
 	public int deleteByPrimaryKey(Long id) {
 		// TODO Auto-generated method stub
 		return cashRecordMapper.deleteByPrimaryKey(id);
 	}
 
+	@Transactional
 	@Override
 	public int insert(CashRecord record) {
 		// TODO Auto-generated method stub
 		return cashRecordMapper.insert(record);
 	}
 
+	@Transactional
 	@Override
 	public int insertSelective(CashRecord record) {
 		// TODO Auto-generated method stub
@@ -43,6 +47,7 @@ public class CashRecordServiceImpl implements CashRecordService{
 		return cashRecordMapper.selectByPrimaryKey(id);
 	}
 
+	@Transactional
 	@Override
 	public int updateByPrimaryKeySelective(CashRecord record) {
 		// TODO Auto-generated method stub

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.dao.RechargeRecordDaoMapper;
 import com.example.demo.dao.mapper.RechargeRecordMapper;
@@ -25,12 +26,14 @@ public class RechargeRecordServiceImpl implements RechargeRecordService{
 		return rechargeRecordMapper.deleteByPrimaryKey(id);
 	}
 
+	@Transactional
 	@Override
 	public int insert(RechargeRecord record) {
 		// TODO Auto-generated method stub
 		return rechargeRecordMapper.insert(record);
 	}
 
+	@Transactional
 	@Override
 	public int insertSelective(RechargeRecord record) {
 		// TODO Auto-generated method stub
@@ -43,12 +46,14 @@ public class RechargeRecordServiceImpl implements RechargeRecordService{
 		return rechargeRecordMapper.selectByPrimaryKey(id);
 	}
 
+	@Transactional
 	@Override
 	public int updateByPrimaryKeySelective(RechargeRecord record) {
 		// TODO Auto-generated method stub
 		return rechargeRecordMapper.updateByPrimaryKeySelective(record);
 	}
 
+	@Transactional
 	@Override
 	public int updateByPrimaryKey(RechargeRecord record) {
 		// TODO Auto-generated method stub

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.dao.JoinBuyDetailDaoMapper;
 import com.example.demo.dao.mapper.JoinBuyDetailMapper;
@@ -19,18 +20,22 @@ public class JoinBuyDetailServiceImpl implements JoinBuyDetailService{
 	private JoinBuyDetailMapper joinBuyDetailMapper;
 	@Autowired
 	private JoinBuyDetailDaoMapper joinBuyDetailDaoMapper;
+	
+	@Transactional
 	@Override
 	public int deleteByPrimaryKey(Long id) {
 		// TODO Auto-generated method stub
 		return joinBuyDetailMapper.deleteByPrimaryKey(id);
 	}
 
+	@Transactional
 	@Override
 	public int insert(JoinBuyDetail record) {
 		// TODO Auto-generated method stub
 		return joinBuyDetailMapper.insert(record);
 	}
 
+	@Transactional
 	@Override
 	public int insertSelective(JoinBuyDetail record) {
 		// TODO Auto-generated method stub
@@ -43,12 +48,14 @@ public class JoinBuyDetailServiceImpl implements JoinBuyDetailService{
 		return joinBuyDetailMapper.selectByPrimaryKey(id);
 	}
 
+	@Transactional
 	@Override
 	public int updateByPrimaryKeySelective(JoinBuyDetail record) {
 		// TODO Auto-generated method stub
 		return joinBuyDetailMapper.updateByPrimaryKeySelective(record);
 	}
 
+	@Transactional
 	@Override
 	public int updateByPrimaryKey(JoinBuyDetail record) {
 		// TODO Auto-generated method stub

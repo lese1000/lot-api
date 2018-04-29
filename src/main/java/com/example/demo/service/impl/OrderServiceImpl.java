@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.dao.OrderDaoMapper;
 import com.example.demo.dao.mapper.OrderMapper;
@@ -20,18 +21,21 @@ public class OrderServiceImpl implements OrderService{
 	@Autowired
 	private OrderDaoMapper orderDaoMapper;
 
+	@Transactional
 	@Override
 	public int deleteByPrimaryKey(Long id) {
 		// TODO Auto-generated method stub
 		return orderMapper.deleteByPrimaryKey(id);
 	}
 
+	@Transactional
 	@Override
 	public int insert(Order record) {
 		// TODO Auto-generated method stub
 		return orderMapper.insert(record);
 	}
 
+	@Transactional
 	@Override
 	public int insertSelective(Order record) {
 		// TODO Auto-generated method stub
@@ -44,24 +48,28 @@ public class OrderServiceImpl implements OrderService{
 		return orderMapper.selectByPrimaryKey(id);
 	}
 
+	@Transactional
 	@Override
 	public int updateByPrimaryKeySelective(Order record) {
 		// TODO Auto-generated method stub
 		return orderMapper.updateByPrimaryKeySelective(record);
 	}
 
+	@Transactional
 	@Override
 	public int updateByPrimaryKey(Order record) {
 		// TODO Auto-generated method stub
 		return orderMapper.updateByPrimaryKey(record);
 	}
 
+	@Transactional
 	@Override
 	public int insertReturnPrimaryKey(Order record) {
 		// TODO Auto-generated method stub
 		return orderDaoMapper.insertReturnPrimaryKey(record);
 	}
 
+	@Transactional
 	@Override
 	public int insertSelectiveReturnPrimaryKey(Order record) {
 		// TODO Auto-generated method stub

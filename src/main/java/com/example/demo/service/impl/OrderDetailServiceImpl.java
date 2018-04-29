@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.dao.OrderDetailDaoMapper;
 import com.example.demo.dao.mapper.OrderDetailMapper;
@@ -19,18 +20,21 @@ public class OrderDetailServiceImpl implements OrderDetailService{
 	@Autowired
 	private OrderDetailDaoMapper orderDetailDaoMapper;
 
+	@Transactional
 	@Override
 	public int deleteByPrimaryKey(Long id) {
 		// TODO Auto-generated method stub
 		return orderDetailMapper.deleteByPrimaryKey(id);
 	}
 
+	@Transactional
 	@Override
 	public int insert(OrderDetail record) {
 		// TODO Auto-generated method stub
 		return orderDetailMapper.insert(record);
 	}
 
+	@Transactional
 	@Override
 	public int insertSelective(OrderDetail record) {
 		// TODO Auto-generated method stub
@@ -43,18 +47,21 @@ public class OrderDetailServiceImpl implements OrderDetailService{
 		return orderDetailMapper.selectByPrimaryKey(id);
 	}
 
+	@Transactional
 	@Override
 	public int updateByPrimaryKeySelective(OrderDetail record) {
 		// TODO Auto-generated method stub
 		return orderDetailMapper.updateByPrimaryKeySelective(record);
 	}
 
+	@Transactional
 	@Override
 	public int updateByPrimaryKey(OrderDetail record) {
 		// TODO Auto-generated method stub
 		return orderDetailMapper.updateByPrimaryKey(record);
 	}
 
+	@Transactional
 	@Override
 	public int batchInsert(List<OrderDetail> orderDetailList) {
 		// TODO Auto-generated method stub
