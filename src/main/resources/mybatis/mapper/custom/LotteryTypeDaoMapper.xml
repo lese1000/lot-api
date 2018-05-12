@@ -11,7 +11,7 @@
   <sql id="Base_Column_List">
     id, lottery_type_name, create_date, del_flag, single_price
   </sql>
-  <select id="listLotteryTypeSelective" parameterType="LotteryType" resultMap="BaseResultMap">
+  <select id="listLotteryTypeSelective" parameterType="com.example.demo.model.entity.LotteryType" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from l_lottery_type

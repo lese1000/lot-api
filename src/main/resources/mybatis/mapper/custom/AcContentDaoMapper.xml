@@ -20,7 +20,7 @@
   <sql id="Blob_Column_List">
     content
   </sql>
-  <select id="listAcContentSelective" parameterType="AcContent" resultMap="ResultMapWithBLOBs">
+  <select id="listAcContentSelective" parameterType="com.example.demo.model.entity.AcContent" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from ac_content

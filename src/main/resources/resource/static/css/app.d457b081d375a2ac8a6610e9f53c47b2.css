@@ -265,6 +265,85 @@ html:not(.watch-active-state) .card-footer a.link:active,
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .default-font-color{
   color: #444
 }
@@ -290,6 +369,170 @@ span {
 .tabbar{
   height: 50px;
 }
+#box{
+  width: 100%;
+  height: 32px;
+  line-height: 30px;
+  overflow: hidden;
+  padding-left: 15px;
+  transition: all 0.5s;
+}
+.anim{
+  transition: all 1s;
+}
+#con1 li{
+  list-style: none;
+  line-height: 30px;
+  height: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -455,6 +698,117 @@ span {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .show-tip-div{
   width:100%;
   float: left;
@@ -470,6 +824,120 @@ span {
 .show-tip-div-right{
   width:80%;float:left;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -507,6 +975,9 @@ span {
 }
 .font-blue{
   color: #4a90e2;
+}
+.scroller-padding{
+  top: 50px;
 }
 
 table.gridtable {
@@ -558,6 +1029,48 @@ transform-origin: 50% 100%;
 .gw_num .num{display: block;float: left;text-align: center;width: 80px;font-style: normal;font-size: 14px;line-height: 24px;border: 0;
 }
 .gw_num em.add{float: right;border-right: 0;border-left: 1px solid #dbdbdb;
+}
+
+table.gridtable {
+  /* border: 1px solid #e6e3e3; */
+  width: 100%;
+	font-family: verdana,arial,sans-serif;
+  text-align: left;
+}
+table.gridtable td {
+	padding: 1px;
+  /* width: 25% */
+}
+.td-w30{
+  width:30%;
+}
+.divi-line{
+content: '';
+height: 1px;
+width: 100%;
+background-color: #e1e1e1;
+display: block;
+transform-origin: 50% 100%;
+}
+.lottery-tip{
+  float:right;
+  color: white;
+  background-color: #4a90e2;
+  border-radius:5px;
+  padding:0 3px;
+}
+
+/* 中奖奖颜色 */
+.bg-red{
+  background-color: red;
+}
+/* 未中奖颜色 */
+.bg-gray{
+  background-color:#e1dcdc;
+}
+/* 默认未开奖颜色 */
+.bg-blue{
+  background-color: #4a90e2;
 }
 
 .circle-box{

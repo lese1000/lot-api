@@ -14,7 +14,7 @@
     id, balance_type, order_id, player_id, balance_val, create_date, create_user
   </sql>
   
-  <select id="listBalanceRecord" resultType="BalanceRecord">
+  <select id="listBalanceRecord" resultMap="BaseResultMap">
   	select <include refid="Base_Column_List"></include>
   	from p_balance_record
   	where player_id = #{playerId}

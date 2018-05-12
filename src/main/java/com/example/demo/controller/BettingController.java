@@ -37,7 +37,7 @@ public class BettingController extends BaseController{
 		try {
 			return bettingService.doJoinBuyStr(lotteryNumId, lotteryTypeId, ruleId, bettingInfoStr, joinBuyInfoStr, this.playerId);
 		} catch (Exception e) {
-			log.error("doBetting Error",e);
+			log.error("doJoinBuyStr Error",e);
 			json.setError();
 		}
 		return this.json;

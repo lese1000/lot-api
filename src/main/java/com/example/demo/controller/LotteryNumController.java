@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.concurrent.TimeUnit;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,8 +23,13 @@ public class LotteryNumController extends BaseController{
 		try {
 			LotteryNum lotteryNum = lotteryNumService.getNewestLotteryNum(lotteryTypeId);
 			if(null == lotteryNum ) {
-				json.setFailure("该彩种已暂停投注");
-				return json;
+				TimeUnit.SECONDS.sleep(1);//等待一秒
+				lotteryNum = lotteryNumService.getNewestLotteryNum(lotteryTypeId);
+				if(null == lotteryNum) {
+					json.setFailure("该彩种已暂停投注");
+					return json;
+				}
+				
 			}
 			json.setData(lotteryNum);
 			json.setSuccess();

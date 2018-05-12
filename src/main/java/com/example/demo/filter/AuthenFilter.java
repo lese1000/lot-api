@@ -26,8 +26,8 @@ import com.example.demo.model.dto.JsonDto;
 
 public class AuthenFilter implements Filter{
 	Logger log = LoggerFactory.getLogger(this.getClass());
-//	private final String NO_INTERCEPTOR_PATH = "((/)|(/api/v1/auth/.*)|(/login)|(/resource/.*)|(/goReg))";
-	private final String NO_INTERCEPTOR_PATH = "((/)|(/api/v1/.*)|(/login)|(/resource/.*)|(/goReg))";
+	private final String NO_INTERCEPTOR_PATH = "((/)|(/api/v1/auth/.*)|(/login)|(/resource/.*)|(/goReg))";//正式
+//	private final String NO_INTERCEPTOR_PATH = "((/)|(/api/v1/.*)|(/login)|(/resource/.*)|(/goReg))";//测试
 //	private final String NO_INTERCEPTOR_PATH = "((/)|(/api/.*)|(/login)|(/resource/.*)|(/goReg))";
 
 	@Override
